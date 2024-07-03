@@ -38,9 +38,9 @@ calcDegree();
 /* Programa una funcion que cuente el numero de caracteres de una cadena de 
 texto. Ej: miFuncion("Hola mundo") devolverá 10*/
 
-const contarCadena = (texto) => {
+const contarCadena = (texto = "") => {
     if (!texto) {
-        console.error(`No ingresaste ningun texto`);
+        console.warn(`No ingresaste ningun texto`);
     } else {
         console.info(`En el texto: "${texto}" hay ${texto.length} caracteres`)
     }
@@ -54,7 +54,7 @@ const contarCadena = (texto) => {
 número de caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá
  "Hola". */
 
-const recortarTexto = (texto, cantidad) => {
+const recortarTexto = (texto = "", cantidad = undefined) => {
     if (!texto) {
         console.warn(`No has ingresado ningun texto`);
         return;
@@ -62,10 +62,10 @@ const recortarTexto = (texto, cantidad) => {
         console.warn(`No ingresaste la longitud para recortar el texto`);
         return;
     }
-    console.info(`El nuevo texto recortado es: "${texto.substring(0, cantidad)}" `)
+    console.info(`El nuevo texto recortado es: "${texto.slice(0, cantidad)}" `)
 }
 
-//recortarTexto("Hola",3);
+//recortarTexto("Hola",2);
 
 //---------------------------------------------------------------------//
 
