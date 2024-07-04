@@ -136,10 +136,9 @@ var girarTexto = (texto) => {
 
 //girarTexto("1212");
 
-/*6) Programa una función para contar el número de veces que se repite una palabra en un texto largo,
-pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.*/
+/*6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.*/
 
-var contarPalabra = (texto, palabra) => {
+var contarPalabra = (texto = undefined, palabra = undefined) => {
     if (!texto) {
         return console.warn(`No has ingresado ningun texto`);
     }
@@ -157,21 +156,20 @@ var contarPalabra = (texto, palabra) => {
         }
     });
 
-    return console.log(resultado);
+    return console.log(`La palabra ${palabra}, se repite ${resultado} veces`);
 }
 
 //contarPalabra("hola mundo adios mundo", "mundo");
 
-/*7) Programa una función que valide si una palabra o frase dada, es un palíndromo 
-(que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.*/
+/*7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.*/
 
-var esPalindromo = (texto) => {
+var esPalindromo = (texto = undefined) => {
     
     if (!texto) {
         console.warn(`Ingresa una palabra o texto`);
     }
     //expresion regular para buscar de forma global todos lo espacios
-    let palabraRecortada = texto.replace(/ /g, "");
+    let palabraRecortada = texto.replace(/ /g, ""); //este permite eliminar en todo el texto
     let palabraGirada = palabraRecortada.split("").reverse().join("");
 
     if (palabraRecortada === palabraGirada) {
@@ -182,10 +180,9 @@ var esPalindromo = (texto) => {
 
 //esPalindromo("salas")
 
-/*8) Programa una función que elimine cierto patrón de caracteres de un texto dado, 
-pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5. */
+/*8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5. */
 
-var eliminarPatron = (texto, patron) => {
+var eliminarPatron = (texto = undefined, patron = undefined) => {
 
     if (!texto) {
         return console.warn('Ingresa un texto por favor');
@@ -197,13 +194,13 @@ var eliminarPatron = (texto, patron) => {
         return console.error('El valor ingresado debe ser de tipo cadena de texto');
     }
 
-    let regex = new RegExp(patron, 'g'); //expresion regular dinamica, g de global
+    let regex = new RegExp(patron, 'ig'); //expresion regular dinamica, g de global
     let reemplazo = texto.replace(regex, '')
-    console.log(reemplazo);   
+    console.info(reemplazo);   
 }
 //Tambien se habria hecho de la siguiente manera
 /* Usar split y join para eliminar el patrón
     let partes = texto.split(patron); // Divide el texto en partes usando "xyz" como delimitador
     let resultado = partes.join("");  // Une las partes sin el patrón "xyz" */
 
-eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+//eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
