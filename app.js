@@ -73,7 +73,7 @@ const recortarTexto = (texto = "", cantidad = undefined) => {
 separados por cierto caracter, pe. miFuncion('hola que tal', ' ') 
 devolverá ['hola', 'que', 'tal']. */
 
-const dividirTexto = (texto, divisor = undefined) => {
+const dividirTexto = (texto = undefined, divisor = undefined) => {
     if (!texto) {
         console.warn(`No has ingresado ningun texto`);
         return;
@@ -95,8 +95,8 @@ pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo. */
 /* typeof: Garantiza que el tipo del dato sea number.
 isNaN: Garantiza que el número no sea NaN, ya que NaN es un valor numérico inválido.*/
 
-var repetirTexto = (texto, cantidad = undefined) => {
-    console.log("Cantidad:", cantidad, "Tipo de Cantidad:", typeof cantidad);
+var repetirTexto = (texto = undefined, cantidad = undefined) => {
+    //console.log("Cantidad:", cantidad, "Tipo de Cantidad:", typeof cantidad);
     if (!texto) {
         return console.warn(`No ingresaste un texto`);
     }
@@ -115,7 +115,7 @@ var repetirTexto = (texto, cantidad = undefined) => {
     console.info(`El texto ingresado es: "${texto}" y su resultado es: "${texto.repeat(cantidad)}"`);
 }
 
-//repetirTexto("aasas", "a"); 
+repetirTexto("aasas", "a"); 
 
 /* 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") 
 devolverá "odnuM aloH".*/
