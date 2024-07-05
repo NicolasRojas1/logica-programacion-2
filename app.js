@@ -248,3 +248,25 @@ const numeroCapicua = (numero = undefined)  => {
 }
 
 //numeroCapicua(20202);
+
+/*11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.*/
+
+const factorial = (numero = undefined) => {
+    if (numero === undefined) {
+        return console.warn('No ingresaste un numero');
+    }
+    if (isNaN(numero) || !Number.isInteger(numero)) {
+        return console.warn('Por favor ingresa un numero entero');
+    }
+    if (numero < 0 ) {
+        return console.error('El numero debe ser positivo');
+    }
+    let resultado = 1;
+    for (let index = 1; index <= numero; index++){
+        resultado = resultado * index;
+    }
+    console.info(`El factorial de ${numero} es ${resultado}`);
+    return resultado;
+}
+
+//factorial(3);
