@@ -204,3 +204,47 @@ var eliminarPatron = (texto = undefined, patron = undefined) => {
     let resultado = partes.join("");  // Une las partes sin el patrón "xyz" */
 
 //eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+
+//9) Programa una función que obtenga un numero aleatorio entre 501 y 600.
+
+const numeroAleatorio = (min = undefined, max = undefined) => {
+    //verifico la ausencia de valor
+    if (min === undefined || max === undefined) {
+        return console.warn('No ingresaste los rangos a evaluar');
+    }
+    if (isNaN(min) || isNaN(max)) {
+        return console.error('Debes ingresar numeros');
+    }
+    if (!Number.isInteger(min) || !Number.isInteger(max)) {
+        return console.warn('Por favor ingresa numeros enteros');
+    }
+    min = Math.ceil(min); //usa el mismo numero o redondea al siguiente
+    max = Math.floor(max), //usa el mismo numero o redondea al menor
+    //(max - min + 1) para ver el rango de posibilidades
+    console.log(Math.floor(Math.random() * (max - min + 1) + min)); 
+}
+
+//numeroAleatorio(null, 600);
+/*10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.*/
+
+const numeroCapicua = (numero = undefined)  => {
+    if (numero === undefined) {
+        return console.warn('No ingresaste un valor');
+    }
+    if (isNaN(numero)) {
+        return console.error('El valor a ingresar debe ser un numero');
+    }
+    if (!Number.isInteger(numero)) {
+        return console.warn('Por favor ingresa un numero entero');
+    }
+    numeroStr = numero.toString();
+    numeroGirado = numeroStr.split("").reverse().join("");
+    
+    if (numeroStr === numeroGirado) {
+        return console.info(`${numeroStr} = ${numeroGirado} es capicúa`)
+    } else {
+        return console.error('El numero no es capicúa');
+    }
+}
+
+//numeroCapicua(20202);
