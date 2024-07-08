@@ -222,9 +222,10 @@ const numeroAleatorio = (min = undefined, max = undefined) => {
     max = Math.floor(max), //usa el mismo numero o redondea al menor
     //(max - min + 1) para ver el rango de posibilidades
     console.log(Math.floor(Math.random() * (max - min + 1) + min)); 
+    console.log(Math.round(Math.random() * 100) + 500);
 }
 
-//numeroAleatorio(null, 600);
+//numeroAleatorio(501, 600);
 /*10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.*/
 
 const numeroCapicua = (numero = undefined)  => {
