@@ -268,3 +268,32 @@ const factorial = (numero = undefined) => {
 }
 
 //factorial(0)
+
+/* 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
+*/
+
+const esPrimo = (numero = undefined) => {
+    if (numero === undefined) {
+        return console.warn('No has ingresado un numero');
+    }
+    if (numero < 2) {
+        return console.info(`el numero ${numero} no es primo`);
+    }
+    if (numero === 2) {
+        return console.info(`El ${numero} es primo`);
+    }
+    if (numero % 2 === 0 ) {
+        return console.info(`El numero ${numero} no es primo`);
+    }
+
+    let limite = Math.sqrt(numero);
+    /* Itera desde 3 hasta la parte entera de la raíz cuadrada del número, incrementando de 2 en 2 para considerar solo números impares. */
+    for (let i = 3; i <= limite; i += 2) {
+        if (numero % i === 0) {
+            return console.info(`El numero ${numero} no es primo`)
+        }
+    }
+    return console.log(`El numero ${numero} es primo`);
+}
+
+//esPrimo(14);
