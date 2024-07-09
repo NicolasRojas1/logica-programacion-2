@@ -1,40 +1,3 @@
-/**Crear un programa en Javascript que realice lo siguiente:
-Debe solicitar al usuario la temperatura en grados Celsius por prompt o por un input.
-Debe convertir la temperatura ingresada de grados Celsius a grados Fahrenheit y Kelvin
-Debe imprimir ambos resultados por consola o por el DOM.
-Debe ser capaz de identificar si los datos de entrada sean de tipo number, en caso contrario debe mandar un mensaje de error y volver a solicitar los datos.
- */
-
-let degree = Number(prompt("Ingrese una temperatura en Celcius"));
-
-function calcKelvin(degree){
-  let  kelvin = degree + 273.15;
-  let resultKelvin = `Los ${degree}° Celsius equivalen a ${kelvin}° Kelvin`; 
-  return resultKelvin;
-}
-
-function calcFarenheit(degree){
-  let  faren = degree * 1.8 + 32;
-  let resultFarenheit = `Los ${degree}° Celsius equivalen a ${faren}° Kelvin`;
-  return resultFarenheit; 
-}
-
-function calcDegree(){
-  while (isNaN(degree)) {
-    alert("El valor ingresado es incorrecto");
-    degree = Number(prompt("Ingrese una temperatura en Celcius"));
-  }
-
-  calcKelvin(degree);
-  calcFarenheit(degree);
-
-  document.getElementById('resultado').innerHTML = `
-  ${calcKelvin(degree)}
-  ${calcFarenheit(degree)}`;
-}
-
-calcDegree();
-
 /* Programa una funcion que cuente el numero de caracteres de una cadena de 
 texto. Ej: miFuncion("Hola mundo") devolverá 10*/
 
@@ -318,3 +281,35 @@ const esPar = (numero = undefined) => {
 }
 
 //esPar(71);
+
+/*14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F. */
+
+const fahrenheitACelsius = (gradosF = undefined) => {
+    if (gradosF === undefined) {
+        return console.warn('No ingresaste un valor a calcular');
+    }
+    if (isNaN(gradosF) || typeof gradosF !== 'number') {
+        return console.error('Por favor ingresa un numero');
+    }
+    let celsius = ((gradosF - 32) / 1.8).toFixed(2);
+    let celsiusParseo = parseFloat(celsius);
+
+    return console.info(`Los ${gradosF}° fahrenheit equivalen a ${celsiusParseo}° celsius `)
+}
+
+//fahrenheitACelsius(900000);
+
+const celsiusAFahrenheit = (gradosC = undefined) => {
+    if (gradosC === undefined) {
+        return console.warn('No ingresaste un valor a calcular');
+    }
+    if (isNaN(gradosC) || typeof gradosC !== 'number') {
+        return console.error('Por favor ingresa un numero');
+    }
+    let fahrenheit = ((gradosC * 1.8) + 32).toFixed(2);
+    let fahrenheitParseo = parseFloat(fahrenheit);
+
+    return console.info(`Los ${gradosC}° celsius equivalen a ${fahrenheitParseo}° fahrenheit`);
+}
+
+//celsiusAFahrenheit(10);
