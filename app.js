@@ -313,3 +313,73 @@ const celsiusAFahrenheit = (gradosC = undefined) => {
 }
 
 //celsiusAFahrenheit(10);
+
+/* 15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.*/
+
+const binarioaDecimal = (numero = undefined) => {
+    if (typeof numero !== 'number') {
+        return console.error('Por favor ingresa un numero');
+    }
+    //Expresion regular para comprobar si es binario
+    let regex = new RegExp(`^[01]+$`);
+    //A string para usar RegExp
+    let numeroString = numero.toString();
+    //Si la expresion regular no encuentra un numero binario
+    if (!regex.test(numeroString)) {
+        return console.error('El numero ingresado no es binario');
+    }
+    //el calculo se hace de derecha a izquierda del numero, por ello se gira el numero
+    let numeroDividido = numeroString.split("").reverse();
+    let resultado = 0;
+    //Formula para calcular decimal
+    for (let i = 0; i < numeroDividido.length; i++) {
+        resultado += Number.parseInt(numeroDividido[i]) * (Math.pow(2,i));
+    }
+    return console.info(`El numero ${numero} convertido a binario es: ${resultado}`);
+}
+
+const decimalaBinario = (numero = undefined) => {
+    if (isNaN(numero) || typeof numero !== 'number' || !Number.isInteger(numero)) {
+        return console.error('No ingresaste un numero valido, intentalo de nuevo');
+    }
+    let numeroDecimal = numero;
+    let binario;
+    let numerosBinarios = [];
+    //Compruebo que me de cada digito binario hasta que su division llegue al numero 1
+    while (numero >= 1 ) {
+        //Si el modulo da 0, el binario en esa posicion es 0 y lo agrego al arreglo
+        if (numero % 2 === 0) {
+            binario = 0;
+            numerosBinarios.push(binario);
+            //Si el modulo da 1, el binario en esa posicion es 1 y lo agrego al arreglo
+        } if (numero % 2 === 1) {
+            binario = 1;
+            numerosBinarios.push(binario);
+        }
+        //Continuo con la division hasta llegar a 1
+       numero = Math.floor(numero / 2);
+    }
+    let resultado = numerosBinarios.reverse().join("")
+    return console.info(`EL numero decimal ${numeroDecimal} a binario es ${resultado}`);
+}
+
+const convertirBinarioDecimal = (numero, base) => {
+    if (numero === undefined) {
+        return console.warn('No ingresaste un numero');
+    }
+    if (isNaN(numero) || typeof numero !== 'number' || !Number.isInteger(numero)) {
+        return console.error('No ingresaste un numero valido, intentalo de nuevo');
+    }
+    if (base !== 2 && base !== 10) {
+        return console.error('La base ingresada no es correcta');
+    }
+    if (base === 2 ) {
+        return binarioaDecimal(numero);
+    }
+    if (base === 10) {
+        return decimalaBinario(numero);
+    }
+    return console.error('No ingresaste los parametros correctos, verifica');
+} 
+
+convertirBinarioDecimal(110110110, 2);
