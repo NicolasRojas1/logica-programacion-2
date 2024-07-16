@@ -400,3 +400,49 @@ const calcularDescuento = (total = undefined, descuento = undefined) => {
 }
 
 calcularDescuento(1000, 20);
+
+/*17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020). */
+
+function esFecha(fecha) {
+    
+    //Si es algo distinto a String
+    if (typeof fecha !== 'string') {
+        return false;
+    }
+    //validacion con regex de la cadena YYYY-MM-DD
+    const fechaRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!fechaRegex.test(fecha)) {
+        return false;
+    }
+    //Si no se puede parsear
+    if (isNaN(Date.parse(fecha))) {
+        return false
+    }
+    return true;
+}
+
+const calcularAnhos = (fecha) => {
+    if (!esFecha(fecha)) {
+        return console.error('la fecha ingresada no es válida o no está en el formato correcto');
+    }
+    //Consigo la fecha actual
+    let fechaActual = new Date();
+    //console.log(fechaActual.toDateString());
+
+    //Fecha a comparar
+    let fechaIngresada = new Date(fecha);
+
+    //Calculo los milisegundos de un dia
+    let milisegundosEnUnDia = 24 * 60 * 60 * 1000;
+
+    //Hallo la diferencia de milisegundos entre fechas
+    let diferenciaEnMilisegundos = (fechaActual.valueOf() - fechaIngresada.valueOf());
+
+    //Calculo cuando años son esos milisegundos
+    let anhos = (diferenciaEnMilisegundos / milisegundosEnUnDia) / 365;
+    console.log(`La cantidad de años transcurridos desde ${fechaIngresada.toDateString()} hasta ${fechaActual.toDateString()} es de: ${anhos.toFixed(2)} años`);
+    return anhos;
+
+}
+
+calcularAnhos('1984-10-23');
