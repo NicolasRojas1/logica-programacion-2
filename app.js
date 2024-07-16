@@ -383,3 +383,20 @@ const convertirBinarioDecimal = (numero, base) => {
 } 
 
 convertirBinarioDecimal(110110110, 2);
+
+/*16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.*/
+
+const calcularDescuento = (total = undefined, descuento = undefined) => {
+
+    if (total === undefined || descuento === undefined) {
+        return console.warn('No ingresastes los valores requeridos');
+    }
+    if (typeof total !== 'number' || typeof descuento !== 'number' || isNaN(total) || isNaN(descuento)) {
+        return console.error('No ingresaste un valor válido');
+    }
+    let resultado = total - ((total * descuento) / 100);
+    console.info(`El producto con el precio de: ${total} tiene un descuento de: ${descuento}% y su valor queda en: ${resultado}`);
+    return resultado;
+}
+
+calcularDescuento(1000, 20);
