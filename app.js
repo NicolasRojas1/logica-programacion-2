@@ -394,6 +394,12 @@ const calcularDescuento = (total = undefined, descuento = undefined) => {
     if (typeof total !== 'number' || typeof descuento !== 'number' || isNaN(total) || isNaN(descuento)) {
         return console.error('No ingresaste un valor válido');
     }
+    if (total <= 0) {
+        return console.error('El total debe ser un numero positivo');
+    }
+    if (descuento <= 0) {
+        return console.warn('El descuento tiene que ser mayor a 0');
+    }
     let resultado = total - ((total * descuento) / 100);
     console.info(`El producto con el precio de: ${total} tiene un descuento de: ${descuento}% y su valor queda en: ${resultado}`);
     return resultado;
