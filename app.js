@@ -450,8 +450,6 @@ const calcularAnhos = (fecha) => {
     return anhos;
 }
 
-/* 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.*/
-
 let contarVocalesConsonantes = (cadena = undefined) => {
     if (cadena === undefined) {
         return console.warn('No has ingresado un texto');
@@ -463,9 +461,9 @@ let contarVocalesConsonantes = (cadena = undefined) => {
     let regExpVocales = /[aeiouáéíóúüàèìòù]/gi;
     let regExpConsonantes = /[b-df-hj-np-tv-zñ]/ig;
 
-    //match me devuelve las ocurrencias de una expresion regular en un array
-    let vocales = cadena.match(regExpVocales);
-    let consonantes = cadena.match(regExpConsonantes);
+    //match me devuelve las ocurrencias de una expresion regular en un array, si no tiene nada deja un array vacio con el []
+    let vocales = cadena.match(regExpVocales) || [];
+    let consonantes = cadena.match(regExpConsonantes) || [];
 
     let vocalesEncontradas = vocales.length;
     let consonantesEncontradas = consonantes.length;
@@ -473,6 +471,6 @@ let contarVocalesConsonantes = (cadena = undefined) => {
     return console.info(`La cadena tiene Vocales: ${vocalesEncontradas} y Consonantes: ${consonantesEncontradas}`);
 }
 
-contarVocalesConsonantes("Hola mundo");
+contarVocalesConsonantes("Hcb");
 
 calcularAnhos('1984-10-23');
