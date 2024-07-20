@@ -450,6 +450,8 @@ const calcularAnhos = (fecha) => {
     return anhos;
 }
 
+calcularAnhos('1984-10-23');
+
 let contarVocalesConsonantes = (cadena = undefined) => {
     if (cadena === undefined) {
         return console.warn('No has ingresado un texto');
@@ -473,4 +475,25 @@ let contarVocalesConsonantes = (cadena = undefined) => {
 
 contarVocalesConsonantes("Hcb");
 
-calcularAnhos('1984-10-23');
+/*19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.*/
+
+// ^ Indica el comienzo de la cadena.
+// + Indica que el conjunto anterior puede aparecer una o más veces
+// $ Indica el final de la cadena
+// \s Indica que acepte espacios en blanco
+
+validarNombre = (nombre = "") => {
+    if (!nombre) {
+        return console.warn('No has proporcionado un nombre');
+    }
+    if (typeof nombre !== 'string') {
+        return console.error('El valor que has ingresado no es correcto');
+    }
+
+    let regExp = /^[a-zÑñáéíóúüàèìòù\s]+$/gi;
+    let validacion = regExp.test(nombre.trim());
+    console.info(validacion);
+    return validacion;
+}
+
+validarNombre("  Nicolas Rojas ");
