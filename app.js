@@ -497,3 +497,22 @@ validarNombre = (nombre = "") => {
 }
 
 validarNombre("  Nicolas Rojas ");
+
+/* 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].*/
+
+let elevarArray = (numeros = []) => {
+    if (!Array.isArray(numeros)) {
+        return console.error('No has proporcionado un arreglo a evaluar');
+    }
+    if (numeros.length === 0) {
+        return console.warn('El arreglo esta vacio');
+    }
+    if (!numeros.every( numero => typeof numero === 'number')) {
+        return console.warn('Los valores del arreglo deben ser de tipo numerico');
+    }
+    let potenciaNumeros = numeros.map(numero => Math.pow(numero,2));
+    console.log(potenciaNumeros);
+    return potenciaNumeros;
+}
+
+elevarArray([2,3,4]);
