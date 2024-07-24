@@ -544,3 +544,35 @@ let ordernarArreglo = (numeros = []) => {
 }
 
 ordernarArreglo([1,4,5,99,-60]);
+
+/*23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}. */
+
+let paresEImpares = (numeros = []) => {
+    //Compruebo que sea arreglo
+    if (!Array.isArray(numeros)) {
+        return console.error('No has ingresado un arreglo');
+    }
+    //Que no este vacio
+    if (numeros.length === 0) {
+        return console.warn('El arreglo no puede estar vacio');
+    }
+    //Cada elemento del arreglo debe ser numerico
+    if (!numeros.every((numero) => typeof numero === 'number')) {
+        return console.warn('Los valores del arreglo deben ser de tipo numerico');
+    }
+    //Arreglos de almacenamiento
+    const pares = [];
+    const impares = [];
+
+    for (let i = 0; i < numeros.length; i++) {
+        if (numeros[i] % 2 === 0) {
+            pares.push(numeros[i]);
+        } else {
+            impares.push(numeros[i]);
+        }
+    }
+    console.log(`pares: [${pares}], impares: [${impares}]`);
+    return [pares, impares];
+}
+
+paresEImpares([1,2,3,4,5,6,7,8,9,0]);
