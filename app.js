@@ -516,3 +516,31 @@ let elevarArray = (numeros = []) => {
 }
 
 elevarArray([2,3,4]);
+
+/*22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].*/
+
+let ordernarArreglo = (numeros = []) => {
+    // Se comprueba si es un arreglo
+    if (!Array.isArray(numeros)) {
+        return  console.error('No has proporcionado un arreglo a evaluar');
+    }
+    // Se verifica que no este vacio
+    if (numeros.length === 0) {
+        return console.warn('El arreglo esta vacio');
+    }
+    // Se comprueba que cada elemento del arreglo sea un numero
+    if (!numeros.every( (numero) => typeof numero === 'number')) {
+        return console.warn('Todos los valores del arreglo deben ser de tipo numerico');
+    }
+     numeros = numeros.sort();
+     let numerosSeleccionados = [numeros[numeros.length -1], numeros[0]];
+     console.log(numerosSeleccionados);
+     return numerosSeleccionados;
+
+     // Otra forma de hacerlo, asi mantengo los numeros y no los transformo a string con el metodo sort
+     // Let max = Math.max(...numeros);
+     // Let min = Math.min(...numeros);
+     // let numerosSeleccionados = [max, min];
+}
+
+ordernarArreglo([1,4,5,99,-60]);
