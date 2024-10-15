@@ -12,18 +12,14 @@ const contarCadena = (texto = "") => {
 número de caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá
  "Hola". */
 
-const recortarTexto = (texto = "", cantidad = undefined) => {
-    if (!texto) {
-        console.warn(`No has ingresado ningun texto`);
-        return;
-    } if (!cantidad || cantidad <= 0 || isNaN(cantidad)) {
-        console.warn(`No ingresaste la longitud para recortar el texto`);
-        return;
-    }
-    console.info(`El nuevo texto recortado es: "${texto.slice(0, cantidad)}" `)
-}
+const recortarTexto = (texto = "", cantidad = undefined) => 
+    (!texto) 
+        ? console.warn(`No has ingresado ningun texto`)
+        : (!cantidad || cantidad <= 0 || isNaN(cantidad)) 
+            ? console.warn(`No ingresaste la longitud para recortar el texto`)
+            : console.info(`El nuevo texto recortado es: "${texto.slice(0, cantidad)}" `)
 
-//recortarTexto("Hola",2);
+recortarTexto("Hola Mundo", 4);
 
 //---------------------------------------------------------------------//
 
