@@ -49,26 +49,18 @@ pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo. */
 isNaN: Garantiza que el número no sea NaN, ya que NaN es un valor numérico inválido.*/
 
 var repetirTexto = (texto = undefined, cantidad = undefined) => {
-    //console.log("Cantidad:", cantidad, "Tipo de Cantidad:", typeof cantidad);
-    if (!texto) {
-        return console.warn(`No ingresaste un texto`);
-    }
-    if (!cantidad) {
-        return console.warn(`No ingresaste el numero de veces a repetir`);
-    }
-    if (typeof cantidad !== 'number') {
-        return console.warn(`La cantidad ingresada no es un numero`);
-    }
-    if (!Number.isInteger(cantidad)) {
-        return console.warn(`La cantidad debe ser un numero entero`);
-    }
-    if (cantidad <= 0) {
-        return console.error(`La cantidad no puede ser negativa`);
-    }
+    if (!texto) return console.warn(`No ingresaste un texto`);
+    
+    if (!cantidad) return console.warn(`No ingresaste el numero de veces a repetir`);
+    
+    if (!Number.isInteger(cantidad)) return console.warn(`La cantidad debe ser un numero entero`);
+    
+    if (cantidad <= 0) return console.error(`La cantidad no puede ser negativa`);
+    
     console.info(`El texto ingresado es: "${texto}" y su resultado es: "${texto.repeat(cantidad)}"`);
 }
 
-repetirTexto("aasas", "a"); 
+repetirTexto("Hola mundo", "a"); 
 
 /* 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") 
 devolverá "odnuM aloH".*/
