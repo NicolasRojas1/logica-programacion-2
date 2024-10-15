@@ -2,14 +2,9 @@
 texto. Ej: miFuncion("Hola mundo") devolverá 10*/
 
 const contarCadena = (texto = "") => {
-    if (!texto) {
-        console.warn(`No ingresaste ningun texto`);
-    } else {
-        console.info(`En el texto: "${texto}" hay ${texto.length} caracteres`)
-    }
+    (!texto) ? console.warn(`No ingresaste ningun texto`) : console.info(`En el texto: "${texto}" hay ${texto.length} caracteres`);
 }
-
-//contarCadena();
+//contarCadena("Hola mundo");
 
 //---------------------------------------------------------------------//
 
