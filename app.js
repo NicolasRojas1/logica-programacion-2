@@ -27,7 +27,7 @@ recortarTexto("Hola Mundo", 4);
 separados por cierto caracter, pe. miFuncion('hola que tal', ' ') 
 devolverá ['hola', 'que', 'tal']. */
 
-const dividirTexto = (texto = undefined, divisor = undefined) => {
+const dividirTexto = (texto = "", divisor = undefined) => {
     if (!texto) {
         console.warn(`No has ingresado ningun texto`);
         return;
@@ -36,11 +36,10 @@ const dividirTexto = (texto = undefined, divisor = undefined) => {
         return;
     }
     var textoDividido = texto.split(divisor);
-    console.log(textoDividido);
     console.info(`El texto: "${texto}" se ha transformado en: [${textoDividido}]`);
 }
 
-//dividirTexto("hola muchachos como van", " ");
+dividirTexto("hola muchachos como van", " ");
 
 //---------------------------------------------------------------------//
 /* Programa una función que repita un texto X veces, 
