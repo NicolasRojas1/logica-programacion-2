@@ -189,24 +189,22 @@ numeroCapicua(202.202);
 /*11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.*/
 
 const factorial = (numero = undefined) => {
-    if (numero === undefined) {
-        return console.warn('No ingresaste un numero');
-    }
-    if (isNaN(numero) || !Number.isInteger(numero)) {
+    if (numero === undefined) return console.warn('No ingresaste un numero');
+
+    if (isNaN(numero) || !Number.isInteger(numero) || typeof numero !== 'number') {
         return console.error('Por favor ingresa un numero entero');
     }
-    if (numero < 0 ) {
-        return console.error('El numero debe ser positivo');
-    }
+    if (numero < 0) return console.error('El numero debe ser positivo');
+
     let resultado = 1;
-    for (let i = 1; i <= numero; i++){
+    for (let i = 1; i <= numero; i++) {
         resultado *= i;
     }
     console.info(`El factorial de ${numero} es ${resultado}`);
     return resultado;
 }
 
-//factorial(0)
+//factorial(1)
 
 /* 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
 */
