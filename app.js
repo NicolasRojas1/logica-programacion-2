@@ -210,21 +210,14 @@ const factorial = (numero = undefined) => {
 */
 
 const esPrimo = (numero = undefined) => {
-    if (numero === undefined) {
-        return console.warn('No has ingresado un numero');
-    }
+    if (numero === undefined) return console.warn('No has ingresado un numero');
+    
     if (isNaN(numero) || !Number.isInteger(numero) || typeof numero !== 'number') {
         return console.error('Por favor ingresa un numero entero');
     }
-    if (numero < 2) {
-        return console.info(`el numero ${numero} no es primo`);
-    }
-    if (numero === 2) {
-        return console.info(`El ${numero} es primo`);
-    }
-    if (numero % 2 === 0 ) {
-        return console.info(`El numero ${numero} no es primo`);
-    }
+    if (numero === 2) return console.info(`el numero ${numero} es primo`);
+
+    if (numero < 2 || numero % 2 === 0 ) return console.info(`El numero ${numero} no es primo`);
 
     let limite = Math.sqrt(numero);
     /* Itera desde 3 hasta la parte entera de la raíz cuadrada del número, incrementando de 2 en 2 para considerar solo números impares. */
@@ -236,7 +229,7 @@ const esPrimo = (numero = undefined) => {
     return console.log(`El numero ${numero} es primo`);
 }
 
-//esPrimo(14);
+//esPrimo(8);
 
 /*13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.*/
 
