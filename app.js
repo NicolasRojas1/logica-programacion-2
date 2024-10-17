@@ -83,13 +83,11 @@ var girarTexto = (texto) => {
 
 /*6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.*/
 
-var contarPalabra = (texto = undefined, palabra = undefined) => {
-    if (!texto) {
-        return console.warn(`No has ingresado ningun texto`);
-    }
-    if (!palabra) {
-        return console.warn(`No has ingresado ninguna palabra a buscar`);
-    }
+var contarPalabra = (texto = "", palabra = "") => {
+    if (!texto) return console.warn(`No has ingresado ningun texto`);
+    
+    if (!palabra) return console.warn(`No has ingresado ninguna palabra a buscar`);
+    
     if (typeof texto !== 'string' && typeof palabra !== 'string') {
         return console.error(`Caracter invalido, ingresa un texto`);
     }
