@@ -234,20 +234,16 @@ const esPrimo = (numero = undefined) => {
 /*13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.*/
 
 const esPar = (numero = undefined) => {
-    if (numero === undefined) {
-        return console.warn('No ingresaste un numero');
-    }
+    if (numero === undefined) return console.warn('No ingresaste un numero');
+
     if (isNaN(numero) || !Number.isInteger(numero) || typeof numero !== 'number') {
         return console.error('Por favor ingresa un numero entero');
     }
-    if (numero % 2 === 0) {
-        return console.info(`El numero ${numero} es par`);
-    } else {
-    return console.info(`El numero ${numero} es impar`);
-    }
+    return (numero % 2 === 0)
+    ? console.info(`El numero ${numero} es par`)
+    : console.info(`El numero ${numero} es impar`)
 }
-
-//esPar(71);
+//esPar(10);
 
 /*14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F. */
 
