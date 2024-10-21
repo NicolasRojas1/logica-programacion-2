@@ -456,6 +456,27 @@ validarNombre = (nombre = "") => {
 
 //validarNombre("  Nicolas Rojas ");
 
+/*20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.*/
+
+validarCorreo = (correo = "") => {
+    // Verifica la entrada de información
+    if (!correo) return console.warn('No has ingresado un correo');
+    // Expresion regular que comprueba el formato de correo
+    let regExp = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}(?:\.[a-z]{2,})?$/i;
+
+    // Eliminar espacios inicio y final
+    correo = correo.trim();
+    let validacion = regExp.test(correo);
+
+    // Comprobacion del valor ingresado con retorno
+    (!validacion) 
+    ? console.error('El correo electronico ingresado no es válido')
+    : console.info(`El correo ${correo} es válido`)
+    
+    return validacion;
+}
+//validarCorreo("ejemplo@dominio");
+
 /* 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].*/
 
 let elevarArray = (numeros = []) => {
