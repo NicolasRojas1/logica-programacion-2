@@ -445,20 +445,16 @@ contarVocalesConsonantes("Hola");
 // \s Indica que acepte espacios en blanco
 
 validarNombre = (nombre = "") => {
-    if (!nombre) {
-        return console.warn('No has proporcionado un nombre');
-    }
-    if (typeof nombre !== 'string') {
-        return console.error('El valor que has ingresado no es correcto');
-    }
-
+    if (!nombre) return console.warn('No has proporcionado un nombre');
+    if (typeof nombre !== 'string')  return console.error('El valor que has ingresado no es correcto');
+    
     let regExp = /^[a-zÑñáéíóúüàèìòù\s]+$/gi;
     let validacion = regExp.test(nombre.trim());
     console.info(validacion);
     return validacion;
 }
 
-validarNombre("  Nicolas Rojas ");
+//validarNombre("  Nicolas Rojas ");
 
 /* 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].*/
 
