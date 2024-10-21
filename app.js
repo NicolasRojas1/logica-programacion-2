@@ -415,13 +415,12 @@ const calcularAnhos = (fecha) => {
 
 calcularAnhos('1984-10-23');
 
+/* 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.*/
+
 let contarVocalesConsonantes = (cadena = undefined) => {
-    if (cadena === undefined) {
-        return console.warn('No has ingresado un texto');
-    }
-    if (!(typeof cadena === 'string')) {
-        return console.error('No ingresaste un texto válido');
-    }
+    if (cadena === undefined) return console.warn('No has ingresado un texto');
+
+    if (!(typeof cadena === 'string')) return console.error('No ingresaste un texto válido');
 
     let regExpVocales = /[aeiouáéíóúüàèìòù]/gi;
     let regExpConsonantes = /[b-df-hj-np-tv-zñ]/ig;
@@ -436,7 +435,7 @@ let contarVocalesConsonantes = (cadena = undefined) => {
     return console.info(`La cadena tiene Vocales: ${vocalesEncontradas} y Consonantes: ${consonantesEncontradas}`);
 }
 
-contarVocalesConsonantes("Hcb");
+contarVocalesConsonantes("Hola");
 
 /*19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.*/
 
