@@ -479,22 +479,24 @@ validarCorreo = (correo = "") => {
 
 /* 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].*/
 
-let elevarArray = (numeros = []) => {
-    if (!Array.isArray(numeros)) {
-        return console.error('No has proporcionado un arreglo a evaluar');
-    }
-    if (numeros.length === 0) {
-        return console.warn('El arreglo esta vacio');
-    }
-    if (!numeros.every( numero => typeof numero === 'number')) {
+let elevarArray = (numeros = undefined) => {
+    if (!Array.isArray(numeros)) return console.error('No has proporcionado un arreglo a evaluar');
+    
+    if (numeros.length === 0) return console.warn('El arreglo esta vacio');
+    
+    if (!numeros.every(numero => typeof numero === 'number')) {
         return console.warn('Los valores del arreglo deben ser de tipo numerico');
     }
-    let potenciaNumeros = numeros.map(numero => Math.pow(numero,2));
+    //Map me permite generar un nuevo arreglo a partir de otro
+    let potenciaNumeros = numeros.map(numero => Math.pow(numero, 2));
     console.log(potenciaNumeros);
     return potenciaNumeros;
 }
 
-elevarArray([2,3,4]);
+//elevarArray([2,3,4]);
+//elevarArray([]);
+//elevarArray();
+//elevarArray(["a", 2, "3"]);
 
 /*22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].*/
 
