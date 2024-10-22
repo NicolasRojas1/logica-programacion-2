@@ -500,31 +500,35 @@ let elevarArray = (numeros = undefined) => {
 
 /*22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].*/
 
-let ordernarArreglo = (numeros = []) => {
+let ordernarArreglo = (numeros = undefined) => {
     // Se comprueba si es un arreglo
     if (!Array.isArray(numeros)) {
-        return  console.error('No has proporcionado un arreglo a evaluar');
+        return console.error('No has proporcionado un arreglo a evaluar');
     }
     // Se verifica que no este vacio
     if (numeros.length === 0) {
         return console.warn('El arreglo esta vacio');
     }
     // Se comprueba que cada elemento del arreglo sea un numero
-    if (!numeros.every( (numero) => typeof numero === 'number')) {
+    if (!numeros.every((numero) => typeof numero === 'number')) {
         return console.warn('Todos los valores del arreglo deben ser de tipo numerico');
     }
-     numeros = numeros.sort();
-     let numerosSeleccionados = [numeros[numeros.length -1], numeros[0]];
-     console.log(numerosSeleccionados);
-     return numerosSeleccionados;
+    //a - b, le indica a sort que reste un numero con el otro, si el resultado es negativo "a" ira antes que b, si es positivo cambian posicion, y si es igual se mantienen en sus puesto.
+    numeros = numeros.sort((a, b) => a - b);
+    let numerosSeleccionados = [numeros[numeros.length - 1], numeros[0]];
+    console.log(numerosSeleccionados);
+    return numerosSeleccionados;
 
-     // Otra forma de hacerlo, asi mantengo los numeros y no los transformo a string con el metodo sort
-     // Let max = Math.max(...numeros);
-     // Let min = Math.min(...numeros);
-     // let numerosSeleccionados = [max, min];
+    // Otra forma de hacerlo, asi mantengo los numeros y no los transformo a string con el metodo sort
+    // Let max = Math.max(...numeros);
+    // Let min = Math.min(...numeros);
+    // let numerosSeleccionados = [max, min];
 }
 
-ordernarArreglo([1,4,5,99,-60]);
+//ordernarArreglo([1,4,5,99,-60]);
+//ordernarArreglo([1,4,5,9,10]);
+//ordernarArreglo();
+//ordernarArreglo([1,4,true]);
 
 /*23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}. */
 
