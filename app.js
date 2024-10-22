@@ -561,3 +561,33 @@ let paresEImpares = (numeros = []) => {
 }
 
 paresEImpares([1,2,3,4,5,6,7,8,9,0]);
+
+/** 24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.*/
+
+const ordenarNumeros = (array = undefined) => {
+    //Compruebo que sea arreglo
+    if (!Array.isArray(array)) {
+        return console.error('No has ingresado un arreglo');
+    }
+    //Que no este vacio
+    if (array.length === 0) {
+        return console.warn('El arreglo no puede estar vacio');
+    }
+    //Cada elemento del arreglo debe ser numerico
+    if (!array.every((numero) => typeof numero === 'number')) {
+        return console.error('Los valores del arreglo deben ser de tipo numerico');
+    }
+    //Uso el operador de propagacion para no afectar el arreglo original
+    const numerosAgrupados = {
+        asc: [...array].sort((a, b) => a - b),
+        desc: [...array].sort((a, b) => b - a)
+    }
+
+    console.log(numerosAgrupados);
+    return numerosAgrupados;
+}
+//Ejemplos de usi
+//ordenarNumeros([7, 5,7,8,6])
+//ordenarNumeros("a",2, 3);
+//ordenarNumeros([]);
+//ordenarNumeros(["a", 2, "2"]);
