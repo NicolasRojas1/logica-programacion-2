@@ -645,3 +645,51 @@ const eliminarDuplicados = (arr = undefined) => {
 //eliminarDuplicados(["x", 10, "x", 2, "10", 10, true, true]);
 //eliminarDuplicados([1]);
 //eliminarDuplicados([]);
+
+/**26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5. */
+
+const promediarValores = (arr = undefined) => {
+
+    //Que sea un arreglo
+    if (!Array.isArray(arr)) {
+        return console.warn('No has ingresado un arreglo');
+    }
+    //Que no este vacio
+    if (arr.length === 0) {
+        return console.warn('El arreglo no debe estar vacio');
+    }
+    //Que sea de elementos numericos
+    if (!arr.every((numero) => typeof numero === 'number')) {
+        return console.error('Los elementos del arreglo deben ser numericos');
+    }
+
+    //Sumo todos los elementos del arreglo
+    let sumatoria = 0;
+    arr.forEach(numero => {
+        sumatoria += numero;
+    });
+
+    //Promedio y retorno su valor
+    const promedio = sumatoria / arr.length;
+    console.info(promedio);
+    //return promedio; 
+
+    //Solucion con ECMA script6
+    /**
+     * total    = me guarda el valor previo
+     * numero   = el numero que en este momento recorre
+     * index    = posicion del numero
+     * arr      = el arreglo
+     */
+    // console.log(arr.reduce((total, numero, index, arr) => {
+    //     total += numero;
+    //     if (index === arr.length - 1) {
+    //         return `El promedio del arreglo es de : ${total / arr.length}`
+    //     } else {
+    //         return total;
+    //     }
+    // }));
+}
+//promediarValores([9,8,7,6,5,4,3,2,1,0]);
+//promediarValores();
+//promediarValores([1,2,"1"]);
