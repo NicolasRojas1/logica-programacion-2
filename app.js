@@ -586,8 +586,62 @@ const ordenarNumeros = (array = undefined) => {
     console.log(numerosAgrupados);
     return numerosAgrupados;
 }
-//Ejemplos de usi
+//Ejemplos de uso
 //ordenarNumeros([7, 5,7,8,6])
 //ordenarNumeros("a",2, 3);
 //ordenarNumeros([]);
 //ordenarNumeros(["a", 2, "2"]);
+
+/** 25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true].*/
+
+/**
+ *  elemento:        El elemento actual del arreglo que se está procesando.
+    indice:          El índice del elemento actual.
+    arregloOriginal: El arreglo original sobre el que se está llamando filter.
+ */
+
+const eliminarDuplicados = (arr = undefined) => {
+
+    //Compruebo que sea arreglo
+    if (!Array.isArray(arr)) {
+        return console.error('No has ingresado un arreglo');
+    }
+    //Que no este vacio
+    if (arr.length === 0) {
+        return console.warn('El arreglo no puede estar vacio');
+    }
+
+    //Que existan al menos 2 elementos
+    if (arr.length < 2) {
+        return console.warn('El arreglo debe tener al menos 2 elementos');
+        
+    }
+    const elementosUnicos = arr.filter((elemento, indice, arregloOriginal) => {
+        /**
+         * filter: Recorre cada elemento del arreglo. Para cada elemento, se ejecuta la función que pasas como argumento.
+         * arregloOriginal.indexOf(elemento) : Busco el primer índice donde se encuentra elementoActual en el arreglo original. SOLO LA PRIMERA APARICION
+         * === indice: Comparo el índice devuelto por indexOf con indice, que es el índice actual en la iteración de filter
+         * 
+         * Primera "x":
+         * indexOf("x") devuelve 0, indiceActual es 0 → incluida.
+         * 
+         * Segunda "x": POR QUE INDEXOF SOLO TOMA LA PRIMERA APARICION
+         * indexOf("x") devuelve 0, indiceActual es 2 → no incluida.
+         * 
+         * 10 (primera aparición):
+         * indexOf(10) devuelve 1, indiceActual es 1 → incluida.
+         * 
+         * 10 (segunda aparición):
+         * indexOf(10) devuelve 1, indiceActual es 5 → no incluida.
+         */
+        return arregloOriginal.indexOf(elemento) === indice;
+    });
+    console.info(elementosUnicos);
+
+    //Tambien se puede con Set, que permite agrupar elementos en un arreglo pero no deja que se repitan
+    //sinDuplicados: [... new Set(arr)];
+    
+}
+//eliminarDuplicados(["x", 10, "x", 2, "10", 10, true, true]);
+//eliminarDuplicados([1]);
+//eliminarDuplicados([]);
