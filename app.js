@@ -724,7 +724,32 @@ class Pelicula {
         this.generos = generos;
         this.calificacionImbd = calificacionImbd;
 
-        //Ejecucion del metodo
-        this.validarIMDB(idPelicula);
+        //Validar cadenas en las funciones, propiedad es el titulo de la pelicula, y el valor el contenido a evaluar, puede ser el id, el mismo titulo o el director
+    validarCadena(propiedad, valor) {
+        if (!valor) return console.warn(`${propiedad} "${valor}" no puede estar vacio`);
+        
+        if (typeof valor !== 'string') return console.error(`${propiedad} "${valor}" ingresado, NO es un texto válido`);
+
+        return true; 
+    }
+
+    //Metodo para validar IMDB
+    validarIMDB(idPelicula) {
+        //Compruebo validaciones, return es para que pare la ejecucion en dado caso que exista un error
+        if(!this.validarCadena('IMDB id', idPelicula)) return;
+
+        //Expresion regular para comprobar caracteres
+        let validarCaracteres = /^[a-z]{2}\d{7}$/
+        
+        //Validar el IMDB
+        if (!validarCaracteres.test(idPelicula)) {
+            return console.error(`IMDB id: ${idPelicula} no es válido, debe ser de 9 caracteres. Los 2 primeros letras minusculas y los últimos 7 númericos`);
+        }
+        //console.info(`El IMDB ${idPelicula} es válido`);
     }
 }
+
+//Prueba
+const pelicula = new Pelicula({
+    idPelicula: "tt1234567a"
+});
