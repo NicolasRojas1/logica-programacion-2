@@ -724,13 +724,16 @@ class Pelicula {
         this.generos = generos;
         this.calificacionImbd = calificacionImbd;
 
-        //Ejecucion del metodo
+        //Ejecucion de metodos
         this.validarIMDB(idPelicula);
+        this.validarTitulo(titulo);
+        this.validarDirector(director);
+        this.validarAnio(anioEstreno);
     }
 
     //Validar cadenas en las funciones, propiedad es el titulo de la pelicula, y el valor el contenido a evaluar, puede ser el id, el mismo titulo o el director
     validarCadena(propiedad, valor) {
-        if (!valor) return console.warn(`${propiedad} "${valor}" no puede estar vacio`);
+        if (!valor) return console.warn(`${propiedad} = "${valor}" no puede estar vacio`);
         
         if (typeof valor !== 'string') return console.error(`${propiedad} "${valor}" ingresado, NO es un texto válido`);
 
@@ -760,7 +763,7 @@ class Pelicula {
         //console.info(`El IMDB ${idPelicula} es válido`);
     }
 
-    //Validar titulo
+    //Validar titulo (OPCIONAL)
     validarTitulo(titulo) {
         //Compruebo que sea cadena de texto
         if(!this.validarCadena('Título', titulo)) return;
@@ -769,12 +772,40 @@ class Pelicula {
         if(!this.validarLongitudCadena('Título', titulo, 100)) return;
 
         //Mensaje de éxito
-        console.info(`El titulo ${titulo} es válido`);
+        console.info(`El titulo: ${titulo} es válido`);  
+    }
+
+    //Validar titulo
+    validarDirector(director) {
+        //Compruebo que sea cadena de texto
+        if(!this.validarCadena('Director', director)) return;
+
+        //Compruebo que no supere el limite permitido
+        if(!this.validarLongitudCadena('Director', director, 50)) return;
+
+        //Mensaje de éxito (OPCIONAL)
+        console.info(`El Director: ${director} es válido`);  
+    }
+
+    //Validar año de estreno
+    validarAnio(year = undefined) {
+        //Validacion para que no este vacio
+        if (!year) return console.warn(`No se ha ingresado el año de estreno`);
         
+        //Validacion de tipo de dato numero y entero
+        if (typeof year !== 'number' || !Number.isInteger(year) || (year < 1000 || year > 9999) ) {
+            return console.error(`El año ${year} ingresado no esta permitido`);
+        }
+
+        console.info(`El año ${year} es correcto`)
     }
 }
 
 //Prueba
 const pelicula = new Pelicula({
-    idPelicula: "tt1234567a"
+    idPelicula: "tt1234567",
+    titulo: "Forrest Gump",
+    director: "Robert Zemeckis",
+    anioEstreno: 1994
+
 });
