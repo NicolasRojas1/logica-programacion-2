@@ -724,7 +724,11 @@ class Pelicula {
         this.generos = generos;
         this.calificacionImbd = calificacionImbd;
 
-        //Validar cadenas en las funciones, propiedad es el titulo de la pelicula, y el valor el contenido a evaluar, puede ser el id, el mismo titulo o el director
+        //Ejecucion del metodo
+        this.validarIMDB(idPelicula);
+    }
+
+    //Validar cadenas en las funciones, propiedad es el titulo de la pelicula, y el valor el contenido a evaluar, puede ser el id, el mismo titulo o el director
     validarCadena(propiedad, valor) {
         if (!valor) return console.warn(`${propiedad} "${valor}" no puede estar vacio`);
         
@@ -733,12 +737,20 @@ class Pelicula {
         return true; 
     }
 
+    //Validar longitud cadena
+    validarLongitudCadena(titulo, valor, longitud) {
+        if (valor.length > longitud) {
+            return console.error(`${titulo} "${valor}" excede el número de caracteres permitidos (${longitud})`);
+        }
+        return true;
+    }
+
     //Metodo para validar IMDB
     validarIMDB(idPelicula) {
-        //Compruebo validaciones, return es para que pare la ejecucion en dado caso que exista un error
+        //Compruebo validaciones, return es para que pare la ejecucion en dado caso que exista un error terminte la ejecucion en este metodo
         if(!this.validarCadena('IMDB id', idPelicula)) return;
 
-        //Expresion regular para comprobar caracteres
+        //Expresion regular para comprobar caracteres de IMDB
         let validarCaracteres = /^[a-z]{2}\d{7}$/
         
         //Validar el IMDB
@@ -746,6 +758,19 @@ class Pelicula {
             return console.error(`IMDB id: ${idPelicula} no es válido, debe ser de 9 caracteres. Los 2 primeros letras minusculas y los últimos 7 númericos`);
         }
         //console.info(`El IMDB ${idPelicula} es válido`);
+    }
+
+    //Validar titulo
+    validarTitulo(titulo) {
+        //Compruebo que sea cadena de texto
+        if(!this.validarCadena('Título', titulo)) return;
+
+        //Compruebo que no supere el limite permitido
+        if(!this.validarLongitudCadena('Título', titulo, 100)) return;
+
+        //Mensaje de éxito
+        console.info(`El titulo ${titulo} es válido`);
+        
     }
 }
 
