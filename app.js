@@ -729,6 +729,7 @@ class Pelicula {
         this.validarTitulo(titulo);
         this.validarDirector(director);
         this.validarAnio(anioEstreno);
+        this.validarPais(paisesOrigen);
     }
 
     //Validar cadenas en las funciones, propiedad es el titulo de la pelicula, y el valor el contenido a evaluar, puede ser el id, el mismo titulo o el director
@@ -747,7 +748,23 @@ class Pelicula {
         if (typeof valor !== 'number') return console.error(`${valor} no es un numero`);
          
         return true;
-        
+    }
+
+    //Validacion de arreglo
+    validarArreglo(propiedad = undefined, arr = undefined) {
+        //Que sea un arreglo
+        if (!Array.isArray(arr)) {
+            return console.error(`"${arr}" no es un arreglo para ${propiedad}`);
+        }
+        //Que no este vacio
+        if (arr.length === 0) {
+            return console.warn(`El arreglo para ${propiedad} no debe estar vacio`);
+        }
+        //Que sea de elementos string
+        if (!arr.every((elemento) => typeof elemento === 'string')) {
+            return console.error(`Los elementos del arreglo ${arr} deben ser string`);
+        }
+        return true;
     }
 
     //Validar longitud cadena
@@ -811,6 +828,12 @@ class Pelicula {
         }
         console.info(`El año: ${year} es correcto`)
     }
+
+    //Validar pais
+    validarPais(pais) {
+        this.validarArreglo("Pais", pais);
+        return console.info(`${pais} es válido`);
+    }
 }
 
 //Prueba
@@ -818,6 +841,7 @@ const pelicula = new Pelicula({
     idPelicula: "tt1234567",
     titulo: "Forrest Gump",
     director: "Robert Zemeckis",
-    anioEstreno: 1994
+    anioEstreno: 1994,
+    paisesOrigen: ["Estados Unidos"]
 
 });
