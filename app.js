@@ -740,6 +740,16 @@ class Pelicula {
         return true; 
     }
 
+    //Valido que el dato sea numerico
+    validarNumero(propiedad, valor) {
+        if (!valor) return console.warn(`${propiedad} = "${valor} no puede estar vacio"`);
+        
+        if (typeof valor !== 'number') return console.error(`${valor} no es un numero`);
+         
+        return true;
+        
+    }
+
     //Validar longitud cadena
     validarLongitudCadena(titulo, valor, longitud) {
         if (valor.length > longitud) {
@@ -792,12 +802,14 @@ class Pelicula {
         //Validacion para que no este vacio
         if (!year) return console.warn(`No se ha ingresado el año de estreno`);
         
-        //Validacion de tipo de dato numero y entero
-        if (typeof year !== 'number' || !Number.isInteger(year) || (year < 1000 || year > 9999) ) {
-            return console.error(`El año ${year} ingresado no esta permitido`);
-        }
+        //Validacion de numero
+        if (!this.validarNumero('Año de estreno', year)) return;
 
-        console.info(`El año ${year} es correcto`)
+        //Validacion de entero y rango
+        if (!Number.isInteger(year) || !(/^([0-9]{4})$/.test(year)) ) {
+            return console.error(`El año ${year} ingresado no esta permitido, debe ser un número de 4 digitios`);
+        }
+        console.info(`El año: ${year} es correcto`)
     }
 }
 
