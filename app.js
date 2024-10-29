@@ -732,6 +732,20 @@ class Pelicula {
         this.validarPais(paisesOrigen);
     }
 
+    //Atributo estatico de generos permitidos
+    static get listaGeneros() {
+        return ["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", 
+            "Crime", "Documentary", "Drama", "Family", "Fantasy", "Film Noir", 
+            "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", 
+            "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", 
+            "Talk-Show", "Thriller", "War", "Western"];
+    }
+
+    //Metodo estatico para ver elementos
+    static generosAceptados() {
+        return console.info(`Los géneros aceptados son: ${Pelicula.listaGeneros.join(", ")}`)
+    }
+
     //Validar cadenas en las funciones, propiedad es el titulo de la pelicula, y el valor el contenido a evaluar, puede ser el id, el mismo titulo o el director
     validarCadena(propiedad, valor) {
         if (!valor) return console.warn(`${propiedad} = "${valor}" no puede estar vacio`);
@@ -837,6 +851,8 @@ class Pelicula {
 }
 
 //Prueba
+Pelicula.generosAceptados();
+
 const pelicula = new Pelicula({
     idPelicula: "tt1234567",
     titulo: "Forrest Gump",
