@@ -715,7 +715,7 @@ Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crim
 class Pelicula {
 
     //Se utiliza destructuracion
-    constructor( {idPelicula, titulo, director, anioEstreno, paisesOrigen, generos, calificacionImbd }) {
+    constructor({ idPelicula, titulo, director, anioEstreno, paisesOrigen, generos, calificacionImbd }) {
         this.idPelicula = idPelicula;
         this.titulo = titulo;
         this.director = director;
@@ -730,14 +730,15 @@ class Pelicula {
         this.validarDirector(director);
         this.validarAnio(anioEstreno);
         this.validarPais(paisesOrigen);
+        this.validarGeneros(generos);
     }
 
     //Atributo estatico de generos permitidos
     static get listaGeneros() {
-        return ["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", 
-            "Crime", "Documentary", "Drama", "Family", "Fantasy", "Film Noir", 
-            "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", 
-            "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", 
+        return ["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy",
+            "Crime", "Documentary", "Drama", "Family", "Fantasy", "Film Noir",
+            "Game-Show", "History", "Horror", "Musical", "Music", "Mystery",
+            "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport",
             "Talk-Show", "Thriller", "War", "Western"];
     }
 
@@ -749,18 +750,18 @@ class Pelicula {
     //Validar cadenas en las funciones, propiedad es el titulo de la pelicula, y el valor el contenido a evaluar, puede ser el id, el mismo titulo o el director
     validarCadena(propiedad, valor) {
         if (!valor) return console.warn(`${propiedad} = "${valor}" no puede estar vacio`);
-        
+
         if (typeof valor !== 'string') return console.error(`${propiedad} "${valor}" ingresado, NO es un texto válido`);
 
-        return true; 
+        return true;
     }
 
     //Valido que el dato sea numerico
     validarNumero(propiedad, valor) {
         if (!valor) return console.warn(`${propiedad} = "${valor} no puede estar vacio"`);
-        
+
         if (typeof valor !== 'number') return console.error(`${valor} no es un numero`);
-         
+
         return true;
     }
 
@@ -792,11 +793,11 @@ class Pelicula {
     //Metodo para validar IMDB
     validarIMDB(idPelicula) {
         //Compruebo validaciones, return es para que pare la ejecucion en dado caso que exista un error terminte la ejecucion en este metodo
-        if(!this.validarCadena('IMDB id', idPelicula)) return;
+        if (!this.validarCadena('IMDB id', idPelicula)) return;
 
         //Expresion regular para comprobar caracteres de IMDB
         let validarCaracteres = /^[a-z]{2}\d{7}$/
-        
+
         //Validar el IMDB
         if (!validarCaracteres.test(idPelicula)) {
             return console.error(`IMDB id: ${idPelicula} no es válido, debe ser de 9 caracteres. Los 2 primeros letras minusculas y los últimos 7 númericos`);
@@ -807,37 +808,37 @@ class Pelicula {
     //Validar titulo (OPCIONAL)
     validarTitulo(titulo) {
         //Compruebo que sea cadena de texto
-        if(!this.validarCadena('Título', titulo)) return;
+        if (!this.validarCadena('Título', titulo)) return;
 
         //Compruebo que no supere el limite permitido
-        if(!this.validarLongitudCadena('Título', titulo, 100)) return;
+        if (!this.validarLongitudCadena('Título', titulo, 100)) return;
 
         //Mensaje de éxito
-        console.info(`El titulo: ${titulo} es válido`);  
+        console.info(`El titulo: ${titulo} es válido`);
     }
 
     //Validar titulo
     validarDirector(director) {
         //Compruebo que sea cadena de texto
-        if(!this.validarCadena('Director', director)) return;
+        if (!this.validarCadena('Director', director)) return;
 
         //Compruebo que no supere el limite permitido
-        if(!this.validarLongitudCadena('Director', director, 50)) return;
+        if (!this.validarLongitudCadena('Director', director, 50)) return;
 
         //Mensaje de éxito (OPCIONAL)
-        console.info(`El Director: ${director} es válido`);  
+        console.info(`El Director: ${director} es válido`);
     }
 
     //Validar año de estreno
     validarAnio(year = undefined) {
         //Validacion para que no este vacio
         if (!year) return console.warn(`No se ha ingresado el año de estreno`);
-        
+
         //Validacion de numero
         if (!this.validarNumero('Año de estreno', year)) return;
 
         //Validacion de entero y rango
-        if (!Number.isInteger(year) || !(/^([0-9]{4})$/.test(year)) ) {
+        if (!Number.isInteger(year) || !(/^([0-9]{4})$/.test(year))) {
             return console.error(`El año ${year} ingresado no esta permitido, debe ser un número de 4 digitios`);
         }
         console.info(`El año: ${year} es correcto`)
@@ -845,19 +846,49 @@ class Pelicula {
 
     //Validar pais
     validarPais(pais) {
-        this.validarArreglo("Pais", pais);
+        //Asi detengo la ejecucion si falla la validacion
+        if (!this.validarArreglo("Pais", pais)) return;
         return console.info(`${pais} es válido`);
+    }
+
+    //Validar genero
+    validarGeneros(generos) {
+        //Devuelve true si es un arreglo
+        if (this.validarArreglo("Géneros", generos)) {
+            //Sirve para cadenas de texto o arreglos
+            let generosIncorrectos = [];
+            let generosPermitidos = [];
+            for (const genero of generos) {
+                //includes valida si el genero esta dentro de la lista devuelve un true
+                if (!Pelicula.listaGeneros.includes(genero)) {
+                    //Lo ingreso a la lista
+                    generosIncorrectos.push(genero)
+                } else {
+                    generosPermitidos.push(genero);
+                }
+            }
+            if (generosIncorrectos.length !== 0 ) 
+                console.error(`Género(s) incorrectos "${generosIncorrectos.join(", ")}"`);
+            
+
+            if (generosPermitidos.length !== 0 ) 
+                console.info(`Género(s) permitidos "${generosPermitidos.join(", ")}"`);
+            
+            Pelicula.generosAceptados();
+            
+        }
+        //return console.info(`${generos} es válido`);       
     }
 }
 
 //Prueba
-Pelicula.generosAceptados();
+//Pelicula.generosAceptados();
 
 const pelicula = new Pelicula({
     idPelicula: "tt1234567",
     titulo: "Forrest Gump",
     director: "Robert Zemeckis",
     anioEstreno: 1994,
-    paisesOrigen: ["Estados Unidos"]
-
+    paisesOrigen: ['Estados Unidos'],
+    generos: ['Adventure', 'Comedy', 'muñecos']
 });
