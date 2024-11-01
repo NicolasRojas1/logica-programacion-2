@@ -731,6 +731,7 @@ class Pelicula {
         this.validarAnio(anioEstreno);
         this.validarPais(paisesOrigen);
         this.validarGeneros(generos);
+        this.validarCalificacion(calificacionImbd);
     }
 
     //Atributo estatico de generos permitidos
@@ -760,7 +761,7 @@ class Pelicula {
     validarNumero(propiedad, valor) {
         if (!valor) return console.warn(`${propiedad} = "${valor} no puede estar vacio"`);
 
-        if (typeof valor !== 'number') return console.error(`${valor} no es un numero`);
+        if (typeof valor !== 'number') return console.error(`"${valor}" no es un numero`);
 
         return true;
     }
@@ -880,6 +881,24 @@ class Pelicula {
             Pelicula.generosAceptados();
         }      
     }
+
+    //Validar calificacion de la pelicula
+    validarCalificacion(calificacion = undefined) {
+        //Validacion para que no este vacio
+        if (calificacion === undefined) return console.warn(`No se ha ingresado la calificacion`);
+
+        //Validacion de numero
+        if (!this.validarNumero('Calificacion', calificacion)) return;
+
+        //Validacion de entero y rango
+        if (calificacion < 0 || calificacion > 10 ) {
+            return console.error(`La calificacion "${calificacion}" ingresado no esta permitida, debe ser un valor entre 0 y 10`);
+        }
+        //Limito el numero de decimales de la calificación
+        this.calificacionImbd = calificacion.toFixed(2);
+        //Mensaje de exito
+        console.info(`La calificacion: ${this.calificacionImbd} es correcta`)
+    }
 }
 
 //Prueba
@@ -891,5 +910,6 @@ const pelicula = new Pelicula({
     director: "Robert Zemeckis",
     anioEstreno: 1994,
     paisesOrigen: ['Estados Unidos'],
-    generos: ['War']
+    generos: ['War'],
+    calificacionImbd: []
 });
