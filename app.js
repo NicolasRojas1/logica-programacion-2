@@ -861,23 +861,24 @@ class Pelicula {
             for (const genero of generos) {
                 //includes valida si el genero esta dentro de la lista devuelve un true
                 if (!Pelicula.listaGeneros.includes(genero)) {
-                    //Lo ingreso a la lista
+                    //Lo ingreso a la lista de incorrectos
                     generosIncorrectos.push(genero)
                 } else {
+                    //Lo ingresp a la lista de correctos
                     generosPermitidos.push(genero);
                 }
             }
+            //Mensaje de error de elementos incorrectos
             if (generosIncorrectos.length !== 0 ) 
                 console.error(`Género(s) incorrectos "${generosIncorrectos.join(", ")}"`);
             
-
+            //Mensaje de informacion de elementos correctos
             if (generosPermitidos.length !== 0 ) 
                 console.info(`Género(s) permitidos "${generosPermitidos.join(", ")}"`);
             
+            //Despliego la lista para enseñar los que estan permitidos
             Pelicula.generosAceptados();
-            
-        }
-        //return console.info(`${generos} es válido`);       
+        }      
     }
 }
 
@@ -890,5 +891,5 @@ const pelicula = new Pelicula({
     director: "Robert Zemeckis",
     anioEstreno: 1994,
     paisesOrigen: ['Estados Unidos'],
-    generos: ['Adventure', 'Comedy', 'muñecos']
+    generos: ['War']
 });
