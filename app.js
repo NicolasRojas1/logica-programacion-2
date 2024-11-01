@@ -814,8 +814,8 @@ class Pelicula {
         //Compruebo que no supere el limite permitido
         if (!this.validarLongitudCadena('Título', titulo, 100)) return;
 
-        //Mensaje de éxito
-        console.info(`El titulo: ${titulo} es válido`);
+        //Mensaje de éxito (OPCIONAL)
+        //console.info(`El titulo: ${titulo} es válido`);
     }
 
     //Validar titulo
@@ -827,7 +827,7 @@ class Pelicula {
         if (!this.validarLongitudCadena('Director', director, 50)) return;
 
         //Mensaje de éxito (OPCIONAL)
-        console.info(`El Director: ${director} es válido`);
+        //console.info(`El Director: ${director} es válido`);
     }
 
     //Validar año de estreno
@@ -842,14 +842,16 @@ class Pelicula {
         if (!Number.isInteger(year) || !(/^([0-9]{4})$/.test(year))) {
             return console.error(`El año ${year} ingresado no esta permitido, debe ser un número de 4 digitios`);
         }
-        console.info(`El año: ${year} es correcto`)
+        //Mensaje de éxito (OPCIONAL)
+        //console.info(`El año: ${year} es correcto`)
     }
 
     //Validar pais
     validarPais(pais) {
         //Asi detengo la ejecucion si falla la validacion
         if (!this.validarArreglo("Pais", pais)) return;
-        return console.info(`${pais} es válido`);
+        //Mensaje de éxito (OPCIONAL)
+        //return console.info(`${pais} es válido`);
     }
 
     //Validar genero
@@ -875,10 +877,12 @@ class Pelicula {
             
             //Mensaje de informacion de elementos correctos
             if (generosPermitidos.length !== 0 ) 
-                console.info(`Género(s) permitidos "${generosPermitidos.join(", ")}"`);
+                //Mensaje de éxito (OPCIONAL)
+                //console.info(`Género(s) permitidos "${generosPermitidos.join(", ")}"`);
             
             //Despliego la lista para enseñar los que estan permitidos
-            Pelicula.generosAceptados();
+            //Pelicula.generosAceptados();
+            return;
         }      
     }
 
@@ -896,8 +900,21 @@ class Pelicula {
         }
         //Limito el numero de decimales de la calificación
         this.calificacionImbd = calificacion.toFixed(2);
-        //Mensaje de exito
-        console.info(`La calificacion: ${this.calificacionImbd} es correcta`)
+        //Mensaje de éxito (OPCIONAL)
+        //console.info(`La calificacion: ${this.calificacionImbd} es correcta`)
+    }
+
+    //Obtener ficha tecnica
+    getFichaTecnica() {
+    console.info(`
+    Ficha técnica:
+    Titulo: ${this.titulo}
+    Director: ${this.director}
+    Año de Estreno: ${this.anioEstreno}
+    Paises de Origen: ${this.paisesOrigen}
+    Generos: ${this.generos}
+    Calificación: ${this.calificacionImbd}
+    IMDB ID: ${this.idPelicula}`)
     }
 }
 
@@ -909,7 +926,9 @@ const pelicula = new Pelicula({
     titulo: "Forrest Gump",
     director: "Robert Zemeckis",
     anioEstreno: 1994,
-    paisesOrigen: ['Estados Unidos'],
+    paisesOrigen: ['Estados Unidos', 'Canada'],
     generos: ['War'],
-    calificacionImbd: []
+    calificacionImbd: 7.532
 });
+
+pelicula.getFichaTecnica();
