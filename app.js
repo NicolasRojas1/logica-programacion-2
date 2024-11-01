@@ -921,14 +921,47 @@ class Pelicula {
 //Prueba
 //Pelicula.generosAceptados();
 
-const pelicula = new Pelicula({
-    idPelicula: "tt1234567",
-    titulo: "Forrest Gump",
-    director: "Robert Zemeckis",
-    anioEstreno: 1994,
-    paisesOrigen: ['Estados Unidos', 'Canada'],
-    generos: ['War'],
-    calificacionImbd: 7.532
-});
+// const pelicula = new Pelicula({
+//     idPelicula: "tt1234567",
+//     titulo: "Forrest Gump",
+//     director: "Robert Zemeckis",
+//     anioEstreno: 1994,
+//     paisesOrigen: ['Estados Unidos', 'Canada'],
+//     generos: ['War'],
+//     calificacionImbd: 7.532
+// });
 
-pelicula.getFichaTecnica();
+// pelicula.getFichaTecnica();
+
+//Crear un arreglo con 3 peliculas
+const peliculas = [
+    {
+        idPelicula: "tt1234561",
+        titulo: "Forrest Gump",
+        director: "Robert Zemeckis I",
+        anioEstreno: 1994,
+        paisesOrigen: ['Estados Unidos', 'Canada'],
+        generos: ['War'],
+        calificacionImbd: 10
+    },
+    {
+        idPelicula: "tt1234562",
+        titulo: "Forrest Gump II",
+        director: "Robert Zemeckis II",
+        anioEstreno: 1996,
+        paisesOrigen: ['Estados Unidos', 'Canada'],
+        generos: ['War'],
+        calificacionImbd: 8
+    },
+    {
+        idPelicula: "tt1234563",
+        titulo: "Forrest Gump III",
+        director: "Robert Zemeckis III",
+        anioEstreno: 1998,
+        paisesOrigen: ['Estados Unidos', 'Canada'],
+        generos: ['War'],
+        calificacionImbd: 9.55
+    }
+];
+
+peliculas.forEach(ele => new Pelicula(ele).getFichaTecnica());
