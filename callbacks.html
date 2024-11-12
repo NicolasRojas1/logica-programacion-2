@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Callbacks</h1>
+    <script>
+        /*
+        ---------------- Callback ---------------
+        Es una funcion que se va a ejecutar despues de que otra lo haga
+        */
+        function cuadradoCallback(value, callback) {
+            setTimeout(() => {
+                callback(value, value*value);
+            }, 0 | Math.random() * 100);
+        }
+
+        cuadradoCallback(0, (value, result) => {
+            console.log('Inicia callback');
+            console.log(`Callback: ${value}, ${result}`);
+            
+            
+        })
+    </script>
+    
+</body>
+</html>
