@@ -12,6 +12,8 @@
         ---------------- Promesas ------------------
         Se pueden ver como un if - else, si esta se cumple se ejecutaria el resolve. Por otro lado, si no se llega a cumplir se ejecutará el reject.
 
+        Las promesas se utilizan cuando se tiene la concatenación de varios procesos asíncronos
+
         Realizo lo mismo con el ejemplo de las callbacks
 
         function cuadradoCallback(value, callback) {
@@ -43,6 +45,30 @@
             .then((obj) => {
                 console.log('Inicia Promise');
                 console.log(`Promise: ${obj.value}, ${obj.result}`);
+                return cuadradoPromise(1);
+            })
+            //Se concatena otro
+            .then((obj) => {
+                console.log(`Promise: ${obj.value}, ${obj.result}`);
+                return cuadradoPromise(2);
+            })
+            .then((obj) => {
+                console.log(`Promise: ${obj.value}, ${obj.result}`);
+                return cuadradoPromise(3);
+            })
+            .then((obj) => {
+                console.log(`Promise: ${obj.value}, ${obj.result}`);
+                return cuadradoPromise(4);
+            })
+            .then((obj) => {
+                console.log(`Promise: ${obj.value}, ${obj.result}`);
+                return cuadradoPromise(5);
+            })
+            //Como solo quiero que sea hasta 5 no debo mandar otro return
+            .then((obj) => {
+                console.log(`Promise: ${obj.value}, ${obj.result}`);
+                console.log('Fin de la promesa');
+                
             })
             .catch();
     </script>
