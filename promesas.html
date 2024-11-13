@@ -10,11 +10,11 @@
     <script>
         /*
         ---------------- Promesas ------------------
-        Se pueden ver como un if - else, si esta se cumple se ejecutaria el resolve. Por otro lado, si no se llega a cumplir se ejecutará el reject.
+        * Se pueden ver como un if - else, si esta se cumple se ejecutaria el resolve. Por otro lado, si no se llega a cumplir se ejecutará el reject.
 
-        Las promesas se utilizan cuando se tiene la concatenación de varios procesos asíncronos
+        * Las promesas se utilizan cuando se tiene la concatenación de varios procesos asíncronos
 
-        Realizo lo mismo con el ejemplo de las callbacks
+        * A diferencia de las callbacks, con las promesas en el catch ya valida el error en cualquiera de sus llamados con el catch
 
         function cuadradoCallback(value, callback) {
             //Settiomeout va a simular el ir y consumir una API externa
@@ -25,6 +25,9 @@
         */
 
         function cuadradoPromise(value){
+            if (typeof value !== 'number')
+            //Si el valor no es un numero
+                return Promise.reject(`Error, el valor ingresado "${value}" no es un numero`);
             //Se crea un objeto de tipo promise, el cual recibe una funcion con los 2 valores "resolve" y "reject"
             return new Promise((resolve, reject) => {
                 //se pasa lo del settimeout
@@ -58,7 +61,7 @@
             })
             .then((obj) => {
                 console.log(`Promise: ${obj.value}, ${obj.result}`);
-                return cuadradoPromise(4);
+                return cuadradoPromise("4");
             })
             .then((obj) => {
                 console.log(`Promise: ${obj.value}, ${obj.result}`);
@@ -70,7 +73,8 @@
                 console.log('Fin de la promesa');
                 
             })
-            .catch();
+            .catch(err => console.error(err));
+            
     </script>
 </body>
 </html>
