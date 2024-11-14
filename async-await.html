@@ -66,6 +66,38 @@
         }
 
         funcionAsyncronaDeclarada();
+
+        //Realizandolo con una expresada
+        const funcionAsyncronaExpresada = async () => {
+            try {
+                console.log('Inicio de Async Function');
+
+                let obj = await cuadradoPromise(6);
+                console.log(`Async Function: ${obj.value}, ${obj.result}`);
+
+                obj = await cuadradoPromise(7);
+                console.log(`Async Function: ${obj.value}, ${obj.result}`);
+
+                obj = await cuadradoPromise(8);
+                console.log(`Async Function: ${obj.value}, ${obj.result}`);
+
+                obj = await cuadradoPromise(9);
+                console.log(`Async Function: ${obj.value}, ${obj.result}`);
+
+                obj = await cuadradoPromise(10);
+                console.log(`Async Function: ${obj.value}, ${obj.result}`);
+
+                obj = await cuadradoPromise("11");
+                console.log(`Async Function: ${obj.value}, ${obj.result}`);
+
+                console.log('Fin de Async Function');
+                
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        funcionAsyncronaExpresada();
     </Script>
 </body>
 </html>
