@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevos Tipos de Datos en JavaScript</title>
+</head>
+<body>
+    <h1>Nuevos Tipos de Datos en JavaScript</h1>
+    <script>
+        /* ------------- Nuevos Tipos de Datos en JavaScript ------------
+        * Symbol: Es un tipo de dato primitivo, como el String, number, boolean, null y undefined
+        - Una vez creado, su valor se mantiene interno y de uso privado
+        - Crea un identificador único, que al compararlo con otro siempre será diferente
+        - Se usan para crear propiedades privadas de los objetos
+        - Si se recorre con un forof las propiedades de un objeto, los symbols no apareceran
+        */
+
+        let id = Symbol("id");
+        let id2 = Symbol("id2");
+        //Un Symbol crea una referencia única asi que no son iguales al compararlos
+        console.log(id === id2);
+
+        console.log(id, id2);
+        //Imprimirá el dato de tipo symbol
+        console.log(typeof id, typeof id2);
+        
+        //La buena práctica indica que se cree como constante
+        const NOMBRE = Symbol("nombre");
+        const SALUDAR = Symbol("saludar"); //Para la creacion de la propiedad
+
+        const persona = {
+            //Tiene que estar previamente creado
+            [NOMBRE]: "Nicolas"
+        };
+        console.log(persona);
+
+        //Se crea la propiedad de "NOMBRE", pero el symbol con su valor se mantiene. Los corchetes mantienen la propiedad de tipo symbol
+        persona.NOMBRE = "Hollie";
+        console.log(persona); //Saldran ambos
+
+        //Para usar la propiedad de tipo symbol, saldrá Nicolas
+        console.log(persona[NOMBRE]);
+        
+        //Creando propiedades con referencia de Symbol
+        persona[SALUDAR] = function () {
+            console.log('Hola');
+        }
+
+        //Invocando la funcion
+        persona[SALUDAR]();
+
+        //Para poder listar los symbolos, ya que no sale con un ciclo for in
+        console.log(Object.getOwnPropertySymbols(persona));
+        
+    </script>
+</body>
+</html>
