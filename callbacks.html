@@ -14,6 +14,8 @@
         ---------------- Callback ---------------
         Es una funcion que se va a ejecutar despues de que otra lo haga
         * Es el primer mecanismo que se tiene para controlar la sincronia, para tener el control del paso a paso en la aplicación
+
+        En las callbacks no se tiene un manejo sencillo de los errores, es por eso que se genera el "callback hell"
         */
         function cuadradoCallback(value, callback) {
             //Settiomeout va a simular el ir y consumir una API externa

@@ -42,7 +42,6 @@
             })
         }
 
-        //Catch atrapa el error resultante del reject
         //Then recibe la parte positiva de la promesa
         cuadradoPromise(0)
             .then((obj) => {
@@ -73,6 +72,7 @@
                 console.log('Fin de la promesa');
                 
             })
+            //Catch atrapa el error resultante del reject
             .catch(err => console.error(err));
             
     </script>
