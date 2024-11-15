@@ -8,7 +8,38 @@
 <body>
     <h1>Sets</h1>
     <script>
-        
+        /* Es una estructura similar a un array, pero de datos únicos
+        */
+       const set = new Set([1,2,3,3,true, false, false,{},{}, "hola", "HOLA"]);
+       console.log(set);
+       //Para saber el tamaño
+       console.log(set.size);
+
+       //Como añadir elementos
+       const set2 = new Set();
+       set2.add(1);
+       set2.add(2);
+       set2.add(2);
+       set2.add(3);
+       set2.add(true);
+       set2.add(false);
+       set2.add(true);
+       set2.add({});
+
+       console.log(set2);
+       console.log(set2.size);
+
+       console.log('---- Inicio cilo for of ----');
+       for (element of set) {
+        console.log(element);
+       }
+
+       console.log('---- Inicio cilo for each ----');
+       set2.forEach(element => {
+        console.log(element);
+       });
+       
+       
     </script>
 </body>
 </html>
