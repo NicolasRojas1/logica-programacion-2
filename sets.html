@@ -9,6 +9,7 @@
     <h1>Sets</h1>
     <script>
         /* Es una estructura similar a un array, pero de datos únicos
+        - Parece ser como un arreglo, pero en realidad no lo es. Es una coleccion de datos
         */
        const set = new Set([1,2,3,3,true, false, false,{},{}, "hola", "HOLA"]);
        console.log(set);
@@ -35,9 +36,22 @@
        }
 
        console.log('---- Inicio cilo for each ----');
-       set2.forEach(element => {
-        console.log(element);
-       });
+       set2.forEach(element =>  console.log(element) );
+       
+       //Para acceder en una posicion se debe convertir en un arreglo
+       let arr = Array.from(set);
+       console.log(arr);
+       
+       //Metodo para eliminar un dato en un Set
+       set.delete("hola")
+       console.log(set);
+
+       //Metodo has para comprobar si existe en la coleccion de datos
+       console.log(set.has("hola"));
+       
+       //Si quisiera limpiar la coleccion
+       set2.clear();
+       console.log(set2);
        
        
     </script>
