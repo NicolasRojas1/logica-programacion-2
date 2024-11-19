@@ -10,9 +10,11 @@
     <script>
         /*
          Se utilizan como coleccion de datos como un objeto primitivo
+         - En los mapas se pueden generar llaves que no sean cadenas de texto
+         - Se parecen mas a los objetos que a los arreglos
          */
 
-        let mapa = new Map();
+        const mapa = new Map();
 
         //Metodo para agregar valores
         mapa.set("nombre", "Nicolas");
@@ -36,9 +38,34 @@
         //Recorrer un mapa, ya que es un elemento iterable se usa el for of
         //Con destructuracion se accede al key y value
         for (const [key, value] of mapa) {
-            console.log(`Llave: ${key}, valor:${value}`);
-            
+            console.log(`Llave: ${key}, valor:${value}`);     
         }
+
+        //con elementos que no sea cadena de texto
+        mapa.set(19, "diecinueve");
+        mapa.set(false, "falso");
+        mapa.set({}, {});
+        console.log(mapa);
+        
+        //Segunda forma de inicializar los valores para un map
+        const mapa2 = new Map([
+            ["nombre", "Snow"],
+            ["edad", 1],
+            ["animal", "dachshund"],
+            [null,"nulo"]
+        ]);
+
+        console.log(mapa2);
+        for (const [key, value] of mapa2) {
+            console.log(`Llave: ${key}, valor: ${value}`);     
+        }
+        
+        //Con ayuda de la destructuracion puedo almacenar lo que son las llaves y los valores en arreglos
+        const llavesMapa2 = [...mapa2.keys()]; 
+        const valoresMapa2 = [...mapa2.values()];
+        
+        console.log(llavesMapa2);
+        console.log(valoresMapa2);
         
         
         
