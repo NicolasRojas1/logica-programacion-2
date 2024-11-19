@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+<body>
+    <h1>Arrays</h1>
+    <script>
+        /*
+        No es mas que una coleccion de elementos
+        */
+       const a = [];
+       const b = [1, true, "Hola", ["A", "B", "C"]];
+
+       console.log(b);
+
+       //Para imprimir la letra "C" en el arreglo dentro del arreglo
+       console.log(b[3][2]);
+
+       //Otra forma de crear arreglos
+       const c = Array.of("X","Y","Z",9,8,7);
+       console.log(c);
+
+       //Inicializar un arreglo y asignarle el mismo valor a todas sus posiciones
+       const d = Array(100).fill(false);
+       //Se llenarà el arreglo de 100 posiciones con un valor que establecì de false
+       console.log(d);
+
+       
+       
+       
+       
+       
+    </script>
+</body>
+</html>
