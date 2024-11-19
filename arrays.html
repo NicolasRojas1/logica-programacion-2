@@ -28,6 +28,24 @@
        //Se llenarà el arreglo de 100 posiciones con un valor que establecì de false
        console.log(d);
 
+       //metodos
+       const colores = ["rojo", "verde", "azul"];
+       console.log(colores);
+
+       //agregar elemento
+       colores.push("negro");
+       console.log(colores);
+
+       //eliminar elemento del final
+       colores.pop();
+       console.log(colores);
+
+       //ejecutar una funcion por cada elemento
+       colores.forEach((ele, index) => {
+        console.log(`<li id="${index}">${ele}</li>`);     
+       })
+       
+       
        
        
        
