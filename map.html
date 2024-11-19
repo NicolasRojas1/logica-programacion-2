@@ -7,5 +7,43 @@
 </head>
 <body>
     <h1>Maps</h1>
+    <script>
+        /*
+         Se utilizan como coleccion de datos como un objeto primitivo
+         */
+
+        let mapa = new Map();
+
+        //Metodo para agregar valores
+        mapa.set("nombre", "Nicolas");
+        mapa.set("apellido", "Rojas");
+        mapa.set("edad", 28);
+
+        console.log(mapa);
+        //Para conocer la cantidad de elementos
+        console.log(mapa.size);
+        //Para preguntar si existe una llave
+        console.log(mapa.has("nombre"));
+        //Para obtener un valor
+        console.log(mapa.get("nombre"));
+        //Sobreescribir un valor
+        mapa.set("nombre", "Hollie");
+        console.log(mapa.get("nombre"));
+        //Eliminar un atributo
+        mapa.delete("apellido");
+        console.log(mapa);
+
+        //Recorrer un mapa, ya que es un elemento iterable se usa el for of
+        //Con destructuracion se accede al key y value
+        for (const [key, value] of mapa) {
+            console.log(`Llave: ${key}, valor:${value}`);
+            
+        }
+        
+        
+        
+        
+        
+    </script>
 </body>
 </html>
