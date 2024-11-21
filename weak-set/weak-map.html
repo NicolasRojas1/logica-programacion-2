@@ -14,6 +14,7 @@
         No se pueden borrar todos los elementos con un metodo
         No se puede saber cuantos elementos tiene
         El weakset al tener una valor nulo este de forma automatica se elimina
+        Recordar que los sets son una especie de arreglos mejorados
         */
 
         const ws = new WeakSet();
@@ -39,7 +40,34 @@
 
         /*
         WEAKMAP
+        Solo permite llaves de tipo objeto, y que esten referenciadas en alguna variable
+        Recordar que los mapas son una especie de objetos mejorados
         */
+
+        const wm = new WeakMap();
+        let llave1 = {};
+        let llave2 = {};
+        let llave3 = {};
+
+        //Agregar una llave
+        wm.set(llave1, 1);
+        wm.set(llave2, 2);
+
+        console.log(wm);
+
+        //Saber si existe la referencia
+        console.log(wm.has(llave1));
+        console.log(wm.has(llave3));
+
+        //Obtener los valores
+        console.log(wm.get(llave1));
+        console.log(wm.get(llave2));
+        console.log(wm.get(llave3));
+
+        //Eliminar un elemento en particular
+        wm.delete(llave2,2);
+        console.log(wm);
+        
         
         
     </script>
