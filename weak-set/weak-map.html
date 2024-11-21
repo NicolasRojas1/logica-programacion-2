@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weak-set/Weat-map</title>
+</head>
+<body>
+    <h1>Weak-set/Weat-map</h1>
+    <script>
+        /* 
+        WEAKSET
+        No se pueden recorrer, no son elementos iterables
+        No se pueden borrar todos los elementos con un metodo
+        No se puede saber cuantos elementos tiene
+        El weakset al tener una valor nulo este de forma automatica se elimina
+        */
+
+        const ws = new WeakSet();
+
+        let valor1 = {"valor1": 1};
+        let valor2 = {"valor1": 2};
+        let valor3 = {"valor1": 3};
+
+        //Añadiendo elementos, tienen que ser objetos. Un valor primitivo como 1 no sirve
+        ws.add(valor1);
+        ws.add(valor2); 
+        ws.add(valor3);
+        
+        console.log(ws);
+
+        //Comprobar si tiene dicha referencia (valor)
+        console.log(ws.has(valor1));
+        console.log(ws.has(valor2));
+        
+        //Eliminar un valor
+        ws.delete(valor3);
+        console.log(ws);
+
+        /*
+        WEAKMAP
+        */
+        
+        
+    </script>
+</body>
+</html>
