@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destructuracion</title>
+</head>
+<body>
+    <h1>Destructuracion</h1>
+
+    <script>
+        /* Es una forma de asignar dinamicamentes valores provenientes de un arreglo u objeto a nuevas variables
+        
+        - Es importante que la variable que se crea tenga el mismo nombre de la propiedad que quiero aislar*/
+
+        const numeros = [1,2,3];
+
+        //Cada uno de los valores del arreglo se guardan de forma dinamica en cada una de las variables
+        const [one, two, three] = numeros;
+        console.log(one);
+        
+        //Si tuviese un objeto y necesito guardar cada una de sus variables en variables independientes
+        const persona = {
+            nombre: "Nicolas",
+            apellido: "Rojas",
+            edad: 28
+        }
+
+        let{nombre, apellido, edad} = persona;
+        console.log(nombre);
+        
+    </script>
+    
+</body>
+</html>
