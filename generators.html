@@ -12,6 +12,15 @@
         Es una syntaxis mas sencilla para generar iteradores
         Funcion que permite trabajar de una manera mas amigable con la interrface de los interadores en un elemento iterable
         Se podria decir que un generador es convertir el código de una función en iterable
+        El generador recuerda donde quedo, y cada vez que lo llamo con next() continua su ejecucion hasta el próximo yield
+        
+        Un generador no ejecuta todo su código de una vez.
+
+        En vez de eso, se pausa en cada yield y espera que tú le digas "¡Sigue!" llamando a next().
+
+        Procesa datos grandes o infinitos sin sobrecargar la memoria.
+
+        Tiempo optimizado: Maneja procesos largos paso a paso sin bloquear todo el programa.
         */
 
         //Se agrega el * para que js sepa que la funcion sera un generador
@@ -39,7 +48,35 @@
         //Para poder guardar en un arreglo el resultado de una función generadora. Entonces se utiliza el spread operator que va a tomar cada uno de los resultados de la funcion iterable
         const arr = [...iterable()];
         console.log(arr);
-        
+
+        //Ejercicio 
+        function cuadrado(valor){
+            setTimeout(() => {
+                return console.log({ 
+                    valor: valor, 
+                    resultado: valor * valor});
+            }, Math.random() * 1000);
+        }
+
+        function* generador() {
+            console.log('Inicia generator');
+            yield cuadrado(0);
+            yield cuadrado(1);
+            yield cuadrado(2);
+            yield cuadrado(3);
+            yield cuadrado(4);
+            yield cuadrado(5);
+            console.log('Termina generator');
+        }
+
+        //Para no ejecutar manualmente cada uno de los tield
+        let gen = generador();
+
+        for (const yield of gen) {
+            console.log(yield);
+            
+        }
+
     </script>
 </body>
 </html>
