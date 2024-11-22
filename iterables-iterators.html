@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iterable & Iterators</title>
+</head>
+<body>
+    <h1>Iterables e Iteradores</h1>
+
+    <script>
+        /*
+        Iterable -> El elemento cuyo contenido se puede recorrer
+        Iterador -> El mecanismo que esta recorriendo los elementos
+        El iterador se convertira en una interface especial para recorrer elementos que sean iterables
+        */
+
+        const iterable = [1,2,3,4,5];
+
+        //Para acceder al iterador del iterable
+        const iterador = iterable[Symbol.iterator]();
+
+        console.log(iterador);
+
+        //Devolverá 2 elementos, el primero value: 1, done: false
+        //El primero es el valor del primer elemento y el done significa que aún hay elementos
+        //console.log(iterador.next());
+        //Si lo ejecuto de nuevo el resultado es value: 2, done: false
+        //console.log(iterador.next());
+        
+        //Para que no sea manual se utiliza un ciclo
+        let next = iterador.next();
+
+        while (!next.done) {
+            console.log(next.value);
+            //next va a ser igual al siguiente valor del iterador de next
+            next = iterador.next(); 
+        }
+      
+    </script>
+</body>
+</html>
