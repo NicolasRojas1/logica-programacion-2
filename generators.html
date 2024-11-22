@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generators</title>
+</head>
+<body>
+    <h1>Generadores</h1>
+    <script>
+        /*
+        Es una syntaxis mas sencilla para generar iteradores
+        Funcion que permite trabajar de una manera mas amigable con la interrface de los interadores en un elemento iterable
+        Se podria decir que un generador es convertir el código de una función en iterable
+        */
+
+        //Se agrega el * para que js sepa que la funcion sera un generador
+        function* iterable() {
+            //Son como un return especial que detienen la función
+            yield "hola";
+            console.log("Hola consola");
+            yield "hola 2";
+            console.log("Seguimos con más instrucciones de nuestro código");
+            yield "hola 3";
+            yield "hola 4";
+        }
+
+        let iterador = iterable();
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+
+        for (const yield of iterador) {
+            console.log(yield);
+        }
+        
+        //Para poder guardar en un arreglo el resultado de una función generadora. Entonces se utiliza el spread operator que va a tomar cada uno de los resultados de la funcion iterable
+        const arr = [...iterable()];
+        console.log(arr);
+        
+    </script>
+</body>
+</html>
