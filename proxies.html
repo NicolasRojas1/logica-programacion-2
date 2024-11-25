@@ -9,7 +9,43 @@
     <h1>Proxies</h1>
     <script>
         /*Son mecanismos de js que permiten crean un objeto basado en un objeto literal inicial
-        - En vez de utilizar clases como modelo a seguir se usa un objeto literal*/
+        - En vez de utilizar clases como modelo a seguir se usa un objeto literal
+        */
+
+        const persona = {
+            nombre: "",
+            apellido: "",
+            edad: 0
+        }
+
+        //Sirve para trabajar las válidaciones
+        const manejador = {
+            //recibe el objeto, las propiedades y cada valor de las propiedades
+            set(obj, prop, valor) {
+                //Creo validaciones para la creacion del objeto, en este caso que solo sean las 3 propiedades del objeto+
+                //Valido si existe una propiedad en un objeto
+                if (!(prop in obj)) {
+                    return console.error(`La propiedad "${prop}" no existe en el objeto persona`);
+                }
+                //Indico que al objeto en cada una de sus propiedades se le asigne el valor que se esta pasando
+                obj[prop] = valor;
+            }
+        }
+
+        //Generar varias personas a partir del objeto literal
+        const jon = new Proxy(persona, manejador);
+
+        //Se empieza a basar en las propiedades del objeto literal, por lo que ahora tiene los atributos de nombre, apellido y edad. Claramente estos estan vacios.
+        console.log(jon);
+
+        //Con estos cambios ya funciona la copia
+        jon.nombre = "Jon";
+        jon.apellido = "Rojas";
+        jon.edad = 20;
+        jon.ciudad = "Colombia";
+        console.log(jon);
+        
+        
     </script>
 </body>
 </html>
