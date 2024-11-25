@@ -10,6 +10,8 @@
     <script>
         /*Son mecanismos de js que permiten crean un objeto basado en un objeto literal inicial
         - En vez de utilizar clases como modelo a seguir se usa un objeto literal
+        - Hace un vinculación entre el objeto original y la copia
+        - A través del manejador se pueden hacer válidaciones antes de hacer la asignación
         */
 
         const persona = {
@@ -18,15 +20,25 @@
             edad: 0
         }
 
-        //Sirve para trabajar las válidaciones
+        //Sirve para trabajar las válidaciones, si sale un error se mantiene la propiedad pero su valor vacio
         const manejador = {
             //recibe el objeto, las propiedades y cada valor de las propiedades
             set(obj, prop, valor) {
-                //Creo validaciones para la creacion del objeto, en este caso que solo sean las 3 propiedades del objeto+
+                //Creo validaciones para la creacion del objeto, en este caso que solo sean las 3 propiedades del objeto
+
                 //Valido si existe una propiedad en un objeto
                 if (!(prop in obj)) {
                     return console.error(`La propiedad "${prop}" no existe en el objeto persona`);
                 }
+
+                //Validar nombre y apellido por medio de la expresion regular
+                if ((prop === "nombre" || prop === "apellido") 
+                    //Expresion regular para validar nombres y apellidos
+                    && !(/^[a-zÑñáéíóúüàèìòù\s]+$/gi.test(valor))
+                ){
+                    return console.error(`La propiedad ${prop} sólo acepta letras y espacios en blanco`);
+                }
+
                 //Indico que al objeto en cada una de sus propiedades se le asigne el valor que se esta pasando
                 obj[prop] = valor;
             }
@@ -42,6 +54,7 @@
         jon.nombre = "Jon";
         jon.apellido = "Rojas";
         jon.edad = 20;
+        //Como el manejador tiene la validacion sobre las propiedades, no la crea y se mantienen los 3 anteriores
         jon.ciudad = "Colombia";
         console.log(jon);
         
