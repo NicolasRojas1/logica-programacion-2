@@ -11,13 +11,19 @@
     <script>
         /* Existen momento en que se necesita crear propiedades durante procesos y para no tener que hacerlo de forma manual existen estas propiedades */
 
+        //Para hacer un ejemplo de un id dinamico dentro del objeto
+        let aleatorio = Math.round(Math.random() * 100 + 5);
+
         // Donde se guardaran los id junto al usuario
-        const objUsuarios = {}
+        const objUsuarios = {
+            //Ahora se puede hacer directamente en esta parte, con los corchetes se hace de forma dinámica
+            [`id_${aleatorio}`]: "Valor Aleatorio"
+        }
         // Donde se inician los usuarios
         const usuarios = ["Nicolas", "Yenni", "Hollie", "Snow"];
 
         // Dará una lista vacia 
-        console.log(objUsuarios);
+        //console.log(objUsuarios);
         // Es mejor depurar asi, asi toma el estado actual del objeto mediante una copia
         console.log({ ...objUsuarios }); 
 
