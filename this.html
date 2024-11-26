@@ -8,7 +8,43 @@
 <body>
     <h1>This</h1>
     <script>
-        /**/
+        
+        this.nombre = "Contexto Global";
+        console.log(this.nombre);
+
+        function imprimir() {
+            console.log(this.nombre);
+        }
+
+        //La funcion anonima maneja su propio scope
+        const obj = {
+            nombre: "Contexto Objeto",
+            imprimir: function() {
+                console.log(this.nombre);
+            }
+        }
+
+        obj.imprimir();
+
+        const obj2 = {
+            nombre: "Contexto Objeto 2",
+            imprimir
+        }
+
+        obj2.imprimir();
+
+        //La arrow function no maneja su propio scope, por lo que toma del padre la funcion imprimir
+        const obj3 = {
+            nombre: "Contexto Objeto 3",
+            imprimir: () => {
+                console.log(this.nombre);
+            }
+        }
+
+        obj3.imprimir();
+
+        //Creando una funcion constructora
+        
     </script>
 </body>
 </html>
