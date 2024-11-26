@@ -8,7 +8,8 @@
 <body>
     <h1>This</h1>
     <script>
-        
+        /* "this" hace referencia al scope donde se encuentra, las funciones anónimas crean scopes pero las arrow-functions no y éstas últimas se brincan al scope superior para buscar la propiedad. */
+
         this.nombre = "Contexto Global";
         console.log(this.nombre);
 
@@ -43,7 +44,13 @@
 
         obj3.imprimir();
 
-        //Creando una funcion constructora
+        //Creando una funcion constructora, esta tambien tiene su propio scope
+        function Persona(nombre) {
+            this.nombre = nombre;
+            return console.log(this.nombre);
+        }
+
+        let nicolas = new Persona("Nicolas");
         
     </script>
 </body>
