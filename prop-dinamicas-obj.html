@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propiedades Dinamicas de los Objetos</title>
+</head>
+<body>
+    <h1>Propiedades Dinamicas de los Objetos</h1>
+
+    <script>
+        /* Existen momento en que se necesita crear propiedades durante procesos y para no tener que hacerlo de forma manual existen estas propiedades */
+
+        // Donde se guardaran los id junto al usuario
+        const objUsuarios = {}
+        // Donde se inician los usuarios
+        const usuarios = ["Nicolas", "Yenni", "Hollie", "Snow"];
+
+        // Dará una lista vacia 
+        console.log(objUsuarios);
+        // Es mejor depurar asi, asi toma el estado actual del objeto mediante una copia
+        console.log({ ...objUsuarios }); 
+
+
+        // Que se genere por cada usuario un id
+        // Le paso el usuario y el indice
+        // el objeto usuarios albergará cada uno de estos valores interpolando con el index para crear su id, y a la vez agregando el valor según el usuario
+        usuarios.forEach((usuario, index) => objUsuarios[`id_${index}`] = usuario);
+
+        //Ya estaran los usuarios con la propiedad id
+        console.log(objUsuarios);
+        
+    </script>
+    
+</body>
+</html>
