@@ -11,6 +11,10 @@
         /* Notacion de Objetos JavaScript
         - Es un formato ligero de cambio de datos
         - Todas las propiedades deben de ir con dobles comillas
+        - PARSE: va a analizar una anotación JSON y la convertirá en un tipo de dato que JS válide como un objeto, arreglo, etc. JSON -> JS
+        - STRINGIFY: Convierte un objeto o valor de JS a texto JSON. JS -> JSON
+        - JSObject Notation (web) muestra el tipo de dato que recibe el JSON
+
         */
 
         const json = {
@@ -26,6 +30,26 @@
         }
 
         console.log(json);
+
+        //METODO PARSE JSON -> JS
+        console.log(JSON.parse("{}")); //Para js ya es un objeto, vacio pero objeto
+        console.log(JSON.parse(19)); 
+        console.log(JSON.parse("19")); 
+        console.log(JSON.parse("[1,2,3]"));
+
+        console.log("-------------------");  
+
+        //METODO STRINGIFY, JS -> JSON
+        console.log(JSON.stringify({}));
+        console.log(JSON.stringify(null)); 
+        console.log(JSON.stringify(true)); 
+        console.log(JSON.stringify([1,2,3]));
+        //automaticamente le agrega las comillas al "x" y al "y"
+        console.log(JSON.stringify({x:3, y:4})); 
+
+        //Lo convierte a un objeto JavaScript
+        console.log(JSON.stringify(json));
+        console.log(JSON.parse('{"cadena": "Nicolas","numero": 28,"booleano": true,"arreglo": ["ejercicio","programar","anime"],"objeto": {"mascota1": "Hollie","mascota2": "Snow"},"nulo": null}'));      
         
     </script>
 </body>
