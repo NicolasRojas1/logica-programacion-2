@@ -54,7 +54,7 @@
 
         console.log('---------------------------');
         
-        //EMC5 call, apply y bind para conservar la referencia en el scope
+        //EMC6 call, apply y bind para conservar la referencia en el scope
         this.lugar = "Contexto Global";
 
         function saludar(saludo, aQuien) {
@@ -73,7 +73,7 @@
         //El metodo apply funciona igual, solo se diferencia en como recibe los parametros, em este caso los recibe en un arreglo
         saludar.apply(objeto, ["adios", "Nicolas"])
 
-        //Bind hace un enlace
+        //Bind hace un enlace para contextos diferentes
         const persona = {
             nombre: "Nicolas",
             saludar: function () {
@@ -82,6 +82,13 @@
         }
 
         persona.saludar();
+
+        const otraPersona = {
+            //solo va a ser una referencia a la otra persona
+            saludar: persona.saludar.bind(persona) //con el bind enlazo el contexto de persona
+        }
+
+        otraPersona.saludar();
     </script>
 </body>
 </html>
