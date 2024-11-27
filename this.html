@@ -6,7 +6,7 @@
     <title>This</title>
 </head>
 <body>
-    <h1>This</h1>
+    <h1>This en JS</h1>
     <script>
         /* "this" hace referencia al scope donde se encuentra, las funciones anónimas crean scopes pero las arrow-functions no y éstas últimas se brincan al scope superior para buscar la propiedad. */
 
@@ -51,7 +51,37 @@
         }
 
         let nicolas = new Persona("Nicolas");
+
+        console.log('---------------------------');
         
+        //EMC5 call, apply y bind para conservar la referencia en el scope
+        this.lugar = "Contexto Global";
+
+        function saludar(saludo, aQuien) {
+            console.log(`${saludo} ${aQuien} desde el ${this.lugar}`);
+        }
+
+        saludar("hola", "hollie");
+
+        const objeto = {
+            lugar: "Contexto Objeto"
+        }
+
+        //Le digo cual contexto quiero que ejecute, en este caso toma el objeto y lo llama. Recibe los parametros con comas
+        saludar.call(objeto, "Hola", "Nicolas");
+
+        //El metodo apply funciona igual, solo se diferencia en como recibe los parametros, em este caso los recibe en un arreglo
+        saludar.apply(objeto, ["adios", "Nicolas"])
+
+        //Bind hace un enlace
+        const persona = {
+            nombre: "Nicolas",
+            saludar: function () {
+                console.log(`Hola ${this.nombre}`);
+            }
+        }
+
+        persona.saludar();
     </script>
 </body>
 </html>
