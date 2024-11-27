@@ -1,0 +1,15 @@
+{
+    "cadena": "Nicolas",
+    "numero": 28,
+    "booleano": true,
+    "arreglo": [
+        "ejercicio",
+        "programar",
+        "anime"
+    ],
+    "objeto": {
+        "mascota1": "Hollie",
+        "mascota2": "Snow"
+    },
+    "nulo": null
+}
