@@ -34,3 +34,19 @@
 // }, 3000);
 
 //NODOS, ELEMENTOS Y SELECTORES
+//no confundir una etiqueta de html con un nodo, los comentarios son nodos, las etiquetas son otro tipo de nodos, los textos como tal también son nodos
+
+console.log(document.getElementById("menu"));
+
+//Este es mas lento que el getElementById.Solo trae el primer elemento que encuentre con el id
+console.log(document.querySelector("#menu"));
+
+//Para buscar todos los elementos con este tipo
+console.log(document.querySelectorAll("#menu"));
+
+//Trae solo el primer a
+console.log(document.querySelector("a"));
+
+//Trae todos los elementos en una nodelist
+console.log(document.querySelectorAll("a"));
+
