@@ -87,3 +87,27 @@ console.log(document.querySelector(".link-dom").getAttribute("href"));
 // Con anotación de punto
 document.documentElement.lang = "en";
 
+// La otra notacion, recibe el nombre del atributo y el nuevo valor
+document.documentElement.setAttribute("lang", "es-MX");
+
+//Guardando en variables los elementos del DOM, algunos programadores agregan un $ a la variable para identificarlos como elementos del HTML
+const $linkDOM = document.querySelector(".link-dom");
+
+// Con el target en _blank hace que se habra en una nueva pestaña
+$linkDOM.setAttribute("target", "_blank");
+$linkDOM.setAttribute("rel", "noopener");
+
+// Cambiando el href
+$linkDOM.setAttribute("href", "https://www.youtube.com/watch?v=l6npGZa_vgc&list=PLvq-jIkSeTUZ6QgYYO3MwG9EMqC-KoLXA&index=64");
+
+// Validar si hay atributos
+console.log($linkDOM.hasAttribute("rel"));
+console.log($linkDOM.hasAttribute("target"));
+
+// Quitar atributos
+$linkDOM.removeAttribute("rel")
+
+// Validar si se quitò
+console.log($linkDOM.hasAttribute("rel"));
+
+// TRABAJAR CON LOS DATA-ATRIBUTTES
