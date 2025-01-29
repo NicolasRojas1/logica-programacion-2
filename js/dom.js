@@ -107,7 +107,26 @@ console.log($linkDOM.hasAttribute("target"));
 // Quitar atributos
 $linkDOM.removeAttribute("rel")
 
-// Validar si se quitò
+// Validar si se quitó
 console.log($linkDOM.hasAttribute("rel"));
 
-// TRABAJAR CON LOS DATA-ATRIBUTTES
+// ------ TRABAJAR CON LOS DATA-ATRIBUTTES --------
+// Obteniendo el data-attribute que creé
+console.log($linkDOM.getAttribute("data-description"));
+
+// Los data attribute los guarda en una propiedad del Mapa
+console.log($linkDOM.dataset);
+
+// Obteniendo un atributo en particular del data-attribute (data-description)
+console.log($linkDOM.dataset.description);
+
+// Establecer nuevos valores
+$linkDOM.setAttribute("data-description", "Modelo de Objeto del Documento");
+// Comprobar que cambio
+console.log($linkDOM.dataset.description);
+
+// CON LA ANOTACIÓN DEL PUNTO
+$linkDOM.dataset.description = "Video del Profe Jon";
+
+// Comprobar el cambio
+console.log($linkDOM.dataset.description);
