@@ -162,11 +162,11 @@ console.log($linkDOM.style);
 console.log($linkDOM.getAttribute("style")); //Accedo a todos los estilos del css
 
 // VARIABLES CSS - Custom Properties CSS (creo unas en la etiqueta style del html)
-//Se debe saber en que etiqueta están. En este caso en root
-const $html = document.documentElement,
-    $body = document.body;
+//Obtener las variables CSS en JavaScript
+const $html = document.documentElement, //Esta para obtener el HTML
+    $body = document.body; //Esta para obtener el body
 
-//Creo variables para cada custom property que creo en el root
+//Creo variables para cada custom property que creo en el root y se están obteniendo los valores de --dark-color y --yellow-color desde :root.
 let varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color"),
  varYellowColor = getComputedStyle($html).getPropertyValue("--yellow-color");
 
@@ -181,3 +181,10 @@ $html.style.setProperty("--dark-color", "#000");
 //Como no se actualiza, debo de actualizar
 varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color");
 $body.style.setProperty("background-color", varDarkColor); //ESTE
+
+/* getComputedStyle(elemento) te da una lista completa de estilos aplicados al elemento.
+ .getPropertyValue("propiedad") te permite obtener un valor específico de esa lista.
+
+✔ Usa getComputedStyle() si necesitas el valor real final.
+❌ Evita .style.propiedad si el estilo está definido en CSS, ya que solo funciona con estilos inline.
+*/
