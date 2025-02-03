@@ -65,68 +65,98 @@ console.log('**** Elementos del Documento *****');
 // console.log(document.querySelectorAll("#menu li"));
 
 
-//------------ Atributos y Data-Attributes ------------
-// Son los atributos que tienen las etiquetas HTML, a partir de HTML5 se pueden crear nuestros propios atributos --> Data-Attributes
+// //------------ Atributos y Data-Attributes ------------
+// // Son los atributos que tienen las etiquetas HTML, a partir de HTML5 se pueden crear nuestros propios atributos --> Data-Attributes
 
-// Lo unico que pide es que empiece con la palabra data-
+// // Lo unico que pide es que empiece con la palabra data-
 
-// Accediendo a un atributo, en este caso el lenguaje
-console.log(document.documentElement.lang);
+// // Accediendo a un atributo, en este caso el lenguaje
+// console.log(document.documentElement.lang);
 
-// Otra manera, MEJOR GETATTRIBUTE
-console.log(document.documentElement.getAttribute("lang"));
+// // Otra manera, MEJOR GETATTRIBUTE
+// console.log(document.documentElement.getAttribute("lang"));
 
-// Capturando el link de un enlace
-//1. En este primero trae todo con direccion IP, lo cual no es óptimo
-console.log(document.querySelector(".link-dom").href);
+// // Capturando el link de un enlace
+// //1. En este primero trae todo con direccion IP, lo cual no es óptimo
+// console.log(document.querySelector(".link-dom").href);
 
-//2. En este si trae el valor escrito en el atributo de href MEJOR
-console.log(document.querySelector(".link-dom").getAttribute("href"));
+// //2. En este si trae el valor escrito en el atributo de href MEJOR
+// console.log(document.querySelector(".link-dom").getAttribute("href"));
 
-// Establecer un nuevo valor a los atributos
-// Con anotación de punto
-document.documentElement.lang = "en";
+// // Establecer un nuevo valor a los atributos
+// // Con anotación de punto
+// document.documentElement.lang = "en";
 
-// La otra notacion, recibe el nombre del atributo y el nuevo valor
-document.documentElement.setAttribute("lang", "es-MX");
+// // La otra notacion, recibe el nombre del atributo y el nuevo valor
+// document.documentElement.setAttribute("lang", "es-MX");
 
-//Guardando en variables los elementos del DOM, algunos programadores agregan un $ a la variable para identificarlos como elementos del HTML
+// //Guardando en variables los elementos del DOM, algunos programadores agregan un $ a la variable para identificarlos como elementos del HTML
+// const $linkDOM = document.querySelector(".link-dom");
+
+// // Con el target en _blank hace que se habra en una nueva pestaña
+// $linkDOM.setAttribute("target", "_blank");
+// $linkDOM.setAttribute("rel", "noopener");
+
+// // Cambiando el href
+// $linkDOM.setAttribute("href", "https://www.youtube.com/watch?v=l6npGZa_vgc&list=PLvq-jIkSeTUZ6QgYYO3MwG9EMqC-KoLXA&index=64");
+
+// // Validar si hay atributos
+// console.log($linkDOM.hasAttribute("rel"));
+// console.log($linkDOM.hasAttribute("target"));
+
+// // Quitar atributos
+// $linkDOM.removeAttribute("rel")
+
+// // Validar si se quitó
+// console.log($linkDOM.hasAttribute("rel"));
+
+// // ------ TRABAJAR CON LOS DATA-ATRIBUTTES --------
+// // Obteniendo el data-attribute que creé
+// console.log($linkDOM.getAttribute("data-description"));
+
+// // Los data attribute los guarda en una propiedad del Mapa
+// console.log($linkDOM.dataset);
+
+// // Obteniendo un atributo en particular del data-attribute (data-description)
+// console.log($linkDOM.dataset.description);
+
+// // Establecer nuevos valores
+// $linkDOM.setAttribute("data-description", "Modelo de Objeto del Documento");
+// // Comprobar que cambio
+// console.log($linkDOM.dataset.description);
+
+// // CON LA ANOTACIÓN DEL PUNTO
+// $linkDOM.dataset.description = "Video del Profe Jon";
+
+// // Comprobar el cambio
+// console.log($linkDOM.dataset.description);
+
+// ---------- Estilos y Variables CSS ----------
 const $linkDOM = document.querySelector(".link-dom");
 
-// Con el target en _blank hace que se habra en una nueva pestaña
-$linkDOM.setAttribute("target", "_blank");
-$linkDOM.setAttribute("rel", "noopener");
+console.log($linkDOM.getAttribute("style")); //Accedo a todos los estilos del css
 
-// Cambiando el href
-$linkDOM.setAttribute("href", "https://www.youtube.com/watch?v=l6npGZa_vgc&list=PLvq-jIkSeTUZ6QgYYO3MwG9EMqC-KoLXA&index=64");
+//A una propiedad en particular
+console.log($linkDOM.style.backgroundColor);
+console.log($linkDOM.style.color);
 
-// Validar si hay atributos
-console.log($linkDOM.hasAttribute("rel"));
-console.log($linkDOM.hasAttribute("target"));
+//Trae las propiedades dinamicas del css
+console.log(getComputedStyle($linkDOM).getPropertyValue("color"));
 
-// Quitar atributos
-$linkDOM.removeAttribute("rel")
+//Establecer valores, quitanto el subrayado
+$linkDOM.style.setProperty("text-decoration", "none");
 
-// Validar si se quitó
-console.log($linkDOM.hasAttribute("rel"));
+//Colocandola como un bloque
+$linkDOM.style.setProperty("display", "block");
 
-// ------ TRABAJAR CON LOS DATA-ATRIBUTTES --------
-// Obteniendo el data-attribute que creé
-console.log($linkDOM.getAttribute("data-description"));
+//Con anotacion del punto
+$linkDOM.style.width = "50%";
+$linkDOM.style.textAlign = "center"; //alineando el texto
+$linkDOM.style.marginLeft = "auto"; //centrando
+$linkDOM.style.marginRight = "auto"; //centrando
+$linkDOM.style.padding = "1rem"; 
+$linkDOM.style.borderRadius = ".5rem";
 
-// Los data attribute los guarda en una propiedad del Mapa
-console.log($linkDOM.dataset);
-
-// Obteniendo un atributo en particular del data-attribute (data-description)
-console.log($linkDOM.dataset.description);
-
-// Establecer nuevos valores
-$linkDOM.setAttribute("data-description", "Modelo de Objeto del Documento");
-// Comprobar que cambio
-console.log($linkDOM.dataset.description);
-
-// CON LA ANOTACIÓN DEL PUNTO
-$linkDOM.dataset.description = "Video del Profe Jon";
-
-// Comprobar el cambio
-console.log($linkDOM.dataset.description);
+//Mostrando de nuevo el linkDom style para ver el cambio en las propiedades
+console.log($linkDOM.style);
+console.log($linkDOM.getAttribute("style")); //Accedo a todos los estilos del css
