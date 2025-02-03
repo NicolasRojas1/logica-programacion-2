@@ -192,4 +192,31 @@ console.log('**** Elementos del Documento *****');
 // */
 
 
-// ACCEDIENDO A LAS CLASES
+// METODOS PARA EL ACCESO Y MANEJO DE LAS CLASES
+//1. Selecciono el primer elemento de la cartas
+const $card = document.querySelector(".card");
+console.log($card);
+
+//2.Agrego una clase al elemento card
+$card.classList.add("rotate-45"); //lo rota
+console.log($card.classList.contains("rotate-45")); //Me comprueba si tiene esa clase el elemento card
+
+//3.Quitando una clase
+$card.classList.remove("rotate-45");
+console.log($card.classList.contains("rotate-45")); //Me comprueba si tiene esa clase el elemento card
+
+//4.Hay otro que si no tiene la clase la agrega y si la tiene la quita
+$card.classList.toggle("rotate-45");
+console.log($card.classList.contains("rotate-45")); //Me comprueba si tiene esa clase el elemento card
+$card.classList.toggle("rotate-45");
+console.log($card.classList.contains("rotate-45"))
+
+//5.Reemplazar una clase por otra
+$card.classList.toggle("rotate-45"); //para que se aplique el rotate
+$card.classList.replace("rotate-45", "rotate-135"); //Se cambia a 135°
+
+//6. Para agregar mas de una clase a la vez al elemento
+$card.classList.add("opacity-80", "sepia"); 
+
+//7. Remove funciona igual
+$card.classList.remove("opacity-80", "sepia"); 
