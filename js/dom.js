@@ -160,3 +160,24 @@ $linkDOM.style.borderRadius = ".5rem";
 //Mostrando de nuevo el linkDom style para ver el cambio en las propiedades
 console.log($linkDOM.style);
 console.log($linkDOM.getAttribute("style")); //Accedo a todos los estilos del css
+
+// VARIABLES CSS - Custom Properties CSS (creo unas en la etiqueta style del html)
+//Se debe saber en que etiqueta están. En este caso en root
+const $html = document.documentElement,
+    $body = document.body;
+
+//Creo variables para cada custom property que creo en el root
+let varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color"),
+ varYellowColor = getComputedStyle($html).getPropertyValue("--yellow-color");
+
+//Asi accedo a las variables css
+console.log(varDarkColor, varYellowColor);
+
+$body.style.backgroundColor = varDarkColor;
+$body.style.color = varYellowColor;
+
+//Cambio el color en la propiedad
+$html.style.setProperty("--dark-color", "#000");
+//Como no se actualiza, debo de actualizar
+varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color");
+$body.style.setProperty("background-color", varDarkColor); //ESTE
